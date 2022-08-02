@@ -1,4 +1,8 @@
+import caseClasses.{CharacterBreakdown, ComponentInfo}
+
 import java.io.FileReader
+import scala.collection.mutable.ListBuffer
+import scala.util.matching.Regex
 
 @main def hello() =
   println("Hello, world")
@@ -24,7 +28,9 @@ import java.io.FileReader
 
   //write a function that takes a character and the files object and
   //returns a string of character + code + search findings
-  def searchFromChar(stringToSearch: String, originalString: String, fileReader: InputSystemFileReader): String = {
+  def searchFromChar(stringToSearch: String,
+                     originalString: String,
+                     fileReader: InputSystemFileReader): String = {
     var inputSystemMatch: String = if (fileReader.zmMap.contains(stringToSearch)) fileReader.zmMap(stringToSearch) else ""
     var idsMatch: String = if (fileReader.idsLinesMap.contains(stringToSearch)) fileReader.idsLinesMap(stringToSearch) else ""
     var shortestPossibleString: String = shortestStringWithMatch(stringToSearch, fileReader)
@@ -43,42 +49,40 @@ import java.io.FileReader
     }else {
       val part1: String = searchFromChar(stringToSearch.substring(0, shortestPossibleString.length), originalString,  fileReader)
       val part2: String = searchFromChar(stringToSearch.substring(shortestPossibleString.length, stringToSearch.length), originalString, fileReader)
-      return part1 + " " + part2
+      return "{" + part1 + "}" + " " + "{" + part2 + "}"
     }
-
-    /*
-    if (!firstResult.isBlank) {
-      return stringToSearch + " " + firstResult
-    }else if (!secondResult.isBlank && stringToSearch != secondResult) {
-      return stringToSearch + " " + stringFromChar(secondResult, secondResult, fileReader)
-    }else if (!secondResult.isBlank) {
-      return secondResult
-    }else{
-      if (stringToSearch.length == 1 && originalString.length > 1) {
-        return stringToSearch + stringFromChar(originalString.substring(1), originalString.substring(1), fileReader)
-      }else if (stringToSearch.length == 1){
-        return stringToSearch
-      } else {
-        return stringFromChar(stringToSearch.substring(0, stringToSearch.length-1), originalString, fileReader)
-      }
-    }
-    */
   }
 
-  def charResult(stringToSearch: String, fileReader: InputSystemFileReader): String ={
+  def charResult(stringToSearch: String, fileReader: InputSystemFileReader): CharacterBreakdown ={
     val firstIds: String = if (fileReader.idsLinesMap.contains(stringToSearch)) fileReader.idsLinesMap(stringToSearch) else ""
+    var character: String = stringToSearch;
+    var fullComponentString: String = null;
+    var firstComponent: String = null;
+    var componentList: ListBuffer[ComponentInfo] = ListBuffer();
     if (firstIds.isBlank) {
-      return "!!!!"
+      return CharacterBreakdown(character, fullComponentString, firstComponent, componentList.toList, "no character match")
     }else {
-      return stringToSearch +
-        " " +
-        firstIds.substring(0,1) +
-      " " +
-      firstIds  +
-        " " +
-        searchFromChar(firstIds.substring(1, firstIds.length), stringToSearch, fileReader)
+      fullComponentString = firstIds;
+      firstComponent = firstIds.substring(0, 1);
+      val rawResult: String = searchFromChar(firstIds.substring(1, firstIds.length), stringToSearch, fileReader)
+     //test that there are no !!!! marks
+     if (rawResult contains "!!!!") {
+       return CharacterBreakdown(character, fullComponentString, firstComponent, componentList.toList, "subcomponentCantBeFound")
+     }else {
+       val pattern = new Regex("\\{[^{}]+\\}");
+       val regexedResult: String = (pattern findAllIn rawResult).mkString("---");
+       val componentInfoMaterial: List[String] = regexedResult.split("---").toList
+       val componentInfoList: List[ComponentInfo] = componentInfoMaterial.map(each => createComponentFromSpaceString(each)).toList
+       return CharacterBreakdown(character, fullComponentString, firstComponent, componentInfoList, "");
+     }
     }
   }
+
+  def createComponentFromSpaceString(each: String): ComponentInfo = {
+    val splittetString: List[String] = each.split(" ").toList;
+    return ComponentInfo(splittetString(0), splittetString(1))
+  }
+
 
   //val result = searchFromChar("缻", "缻", files)
 
