@@ -6,10 +6,60 @@ import scala.util.control.NonFatal
 class InputSystemFileReader {
 
   var idsLinesMap: Map[String, String] = Map();
-  var idsRawLines: List[List[String]] = null//List[List[String]] = null
+  var idsRawLines: List[List[String]] = null;
+  var tzaiLines: List[List[String]] = null;
+  var zhengmaLines: List[List[String]] = null;
+  var zhengmaMap: Map[String, List[String]] = Map();
+  var tzaiSimpelList: List[String] = null;
 
   def getIdsLinesMap() : Map[String, String] = idsLinesMap
   def getIdsRawLines() : List[List[String]] = idsRawLines
+
+  def getTzaiLines(): List[List[String]] = tzaiLines
+  def getZhengmaMap(): Map[String,List[String]] = zhengmaMap
+  
+  def loadZhengma() = {
+    var tempLines = new ListBuffer[List[String]]()
+    val source = Source.fromFile("./src/resources/zhengmaChar.txt")
+
+    for (eachLineElem: String <- source.getLines()) {
+      if (eachLineElem != null && eachLineElem.size > 1) {
+        tempLines += eachLineElem.split("\\s+").toList
+      }
+    }
+    zhengmaLines = tempLines.toList
+
+    for (eachSubList <- zhengmaLines) {
+      if (eachSubList != null
+        && eachSubList.size > 2
+        && eachSubList(1) != null
+        && eachSubList(1).size > 0
+        && eachSubList(2) != null
+        && eachSubList(2).size > 0) {
+        zhengmaMap = zhengmaMap + (eachSubList(0) -> eachSubList)
+      }
+    }
+    source.close()
+  }
+
+  def loadTzai() = {
+    var tempLines = new ListBuffer[List[String]]() //List[List[String]] = List()
+    //var tempHash: Map[String, String] = Map();
+    val source = Source.fromFile("./src/resources/tzai.txt")
+
+    for (eachLineElem: String <- source.getLines()) {
+      if (eachLineElem != null && eachLineElem.size > 1) {
+        tempLines += eachLineElem.split("\\s+").toList
+      }
+    }
+    //tempLines.toList.foreach(x => idsLinesMap + (x(1) -> x(2)))
+    tzaiLines = tempLines.toList
+    source.close()
+    
+    //tzaiSimpelList
+    tzaiSimpelList = tempLines.toList.map(each => each(0))
+    
+  }
 
   def loadIds() = {
     var tempLines = new ListBuffer[List[String]]() //List[List[String]] = List()

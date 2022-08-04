@@ -7,12 +7,10 @@ import scala.util.matching.Regex
 @main def hello() =
   println("Hello, world")
 
-
-  //println(files.idsLinesMap("中"))
-  //println(files.idsLinesMap("缻"))
-
   val files: InputSystemFileReader = new InputSystemFileReader()
   files.loadIds()
+  files.loadTzai()
+  files.loadZhengma()
 
   def shortestStringWithMatch(stringToSearch: String, fileReader: InputSystemFileReader): String = {
     var firstResult: String = if (fileReader.zmMap.contains(stringToSearch)) fileReader.zmMap(stringToSearch) else ""
@@ -44,8 +42,14 @@ import scala.util.matching.Regex
     }else if (shortestPossibleString.isBlank && stringToSearch.length == 1) {
       return stringToSearch+"!!!!"
     }else if (shortestPossibleString.isBlank) {
-      return stringToSearch.substring(0,1) + " " +
-        searchFromChar(stringToSearch.substring(1, stringToSearch.length), originalString, fileReader)
+
+      //stringToSearch might be empty here
+      if (stringToSearch.size == 0) {
+        return ""
+      }else {
+        return stringToSearch.substring(0, 1) + " " +
+          searchFromChar(stringToSearch.substring(1, stringToSearch.length), originalString, fileReader)
+      }
     }else {
       val part1: String = searchFromChar(stringToSearch.substring(0, shortestPossibleString.length), originalString,  fileReader)
       val part2: String = searchFromChar(stringToSearch.substring(shortestPossibleString.length, stringToSearch.length), originalString, fileReader)
@@ -66,7 +70,7 @@ import scala.util.matching.Regex
       firstComponent = firstIds.substring(0, 1);
       val rawResult: String = searchFromChar(firstIds.substring(1, firstIds.length), stringToSearch, fileReader)
      //test that there are no !!!! marks
-     if (rawResult contains "!!!!") {
+     if ((rawResult contains "!!!!") || rawResult.size == 0) {
        return CharacterBreakdown(character, fullComponentString, firstComponent, componentList.toList, "subcomponentCantBeFound")
      }else {
        val pattern = new Regex("\\{[^{}]+\\}");
@@ -78,17 +82,35 @@ import scala.util.matching.Regex
     }
   }
 
+  def goThroughTzaiList(numberOfChars: Int, files: InputSystemFileReader): ListBuffer[CharacterBreakdown] = {
+    var breakdownList: ListBuffer[CharacterBreakdown] = ListBuffer()
+    var endThis: String = ""
+    var errorTzai: List[String] = null;
+    var errorBreakdown: CharacterBreakdown = null;
+
+    for (i <- List.range(0, numberOfChars)) {
+      val currentTzai: String = files.tzaiLines(i)(0)
+      val result: CharacterBreakdown = charResult(currentTzai, files)
+      if (result.errorMessage.size > 0 && errorTzai == null) {
+        println(files.tzaiLines(i))
+        println(result)
+        errorTzai = files.tzaiLines(i)
+        errorBreakdown = result
+      }
+    }
+    return breakdownList;
+  }
+
   def createComponentFromSpaceString(each: String): ComponentInfo = {
     val splittetString: List[String] = each.split(" ").toList;
     return ComponentInfo(splittetString(0), splittetString(1))
   }
 
+  val result: ListBuffer[CharacterBreakdown] = goThroughTzaiList(10, files)
 
-  //val result = searchFromChar("缻", "缻", files)
+  
 
-  println(charResult("的", files))
-  println(charResult("是", files))
-
+  println("end")
 
   //println(files.idsLinesMap("缶"))
   //println(files.idsLinesMap("瓦"))
