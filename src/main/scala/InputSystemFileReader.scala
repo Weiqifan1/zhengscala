@@ -113,7 +113,8 @@ class InputSystemFileReader {
     "車" -> "2Pfk", "專" -> "2Sfk 2Sds", "甫" -> "2Pfb", "雨" -> "2Pfv")
   private val zmG = HashMap("石" -> "1Pg", "丆" -> "1Sg", "厂" -> "2Pgg", "大" -> "2Pgd",
     "𠂇" -> "2Sgd", "辰" -> "2Pgh", "尨" -> "2Sgm", "不" -> "2Pgi", "頁" -> "2Sgo",
-    "而" -> "2Pgl", "豕" -> "2Pgq", "𧰨" -> "2Sgq")
+    "而" -> "2Pgl", "豕" -> "2Pgq", "𧰨" -> "2Sgq",
+    "在" -> "2Sgd 1Pi 1Pb")
   private val zmH = HashMap("匚" -> "1Ph", "臣" -> "1Sh", "一⿰𠄌⿺乀丿" -> "1Sh", "七" -> "2Phd",
     "巠" -> "2Phd 2Pbi", "弋" -> "2Phs", "戈" -> "2Phm", "戊" -> "2Shm",
     "牙" -> "2Phi", "至" -> "2Phb")
@@ -135,7 +136,7 @@ class InputSystemFileReader {
     "𠂒" -> "2Smb", "㐄" -> "2Smb", "气" -> "2Pmy", "氣" -> "2Smy", "毛" -> "2Pmh",
     "禾" -> "2Pmf", "余" -> "2Pod 2Smf", "生" -> "2Pmc", "手" -> "2Pmd",
     "龵" -> "2Smd", "千" -> "2Pme",
-    "缶" -> "2Pma 2Ped 2Pzi")
+    "缶" -> "2Pma 2Ped 2Pzi", "我" -> "2Smd 2Phm")
   private val zmN = HashMap("亻" -> "1Pn", "片" -> "2Pnx", "川" -> "2Pnd", "⿰丿丨" -> "2Snd",
     "𣶒" -> "2Snd", "㐬" -> "2Psh 2Snd", "臼" -> "2Pnb", "臼丨" -> "2Snb",
     "與" -> "2Snb 1Po", "𦥯" -> "2Snb 2Pos 2Pos", "𦥑冖" -> "2Snb",

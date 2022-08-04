@@ -12,6 +12,8 @@ import scala.util.matching.Regex
   files.loadTzai()
   files.loadZhengma()
 
+  println(files.zmMap("我"))
+
   def shortestStringWithMatch(stringToSearch: String, fileReader: InputSystemFileReader): String = {
     var firstResult: String = if (fileReader.zmMap.contains(stringToSearch)) fileReader.zmMap(stringToSearch) else ""
     var secondResult: String = if (fileReader.idsLinesMap.contains(stringToSearch)) fileReader.idsLinesMap(stringToSearch) else ""
@@ -29,7 +31,11 @@ import scala.util.matching.Regex
   def searchFromChar(stringToSearch: String,
                      originalString: String,
                      fileReader: InputSystemFileReader): String = {
-    var inputSystemMatch: String = if (fileReader.zmMap.contains(stringToSearch)) fileReader.zmMap(stringToSearch) else ""
+    var inputSystemMatch: String = if
+    (fileReader.zmMap.contains(stringToSearch))
+      ("{"+stringToSearch + " " + fileReader.zmMap(stringToSearch)+"}") else ""
+    if (fileReader.zmMap.contains(originalString)) inputSystemMatch =
+      ("{"+ originalString + " " +fileReader.zmMap(originalString) +"}")
     var idsMatch: String = if (fileReader.idsLinesMap.contains(stringToSearch)) fileReader.idsLinesMap(stringToSearch) else ""
     var shortestPossibleString: String = shortestStringWithMatch(stringToSearch, fileReader)
 
@@ -108,7 +114,7 @@ import scala.util.matching.Regex
 
   val result: ListBuffer[CharacterBreakdown] = goThroughTzaiList(10, files)
 
-  
+
 
   println("end")
 
