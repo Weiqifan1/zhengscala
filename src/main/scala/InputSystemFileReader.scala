@@ -27,8 +27,24 @@ class InputSystemFileReader {
         tempLines += eachLineElem.split("\\s+").toList
       }
     }
-    zhengmaLines = tempLines.toList
 
+    //create a list of 2 items, char and all matches
+    //val
+
+    val joinedLines: Map[String, List[List[String]]] = tempLines.toList.groupBy(each => each(0))
+    //val joinedLines: Map[String, List[String]] = tempLines.toList.groupBy(removeCharandFlatten(each) => each(0))
+
+
+
+    zhengmaMap = joinedLines.map(tup => flattenPair(tup._1, tup._2))
+
+    def flattenPair(key: String, eachTup: List[List[String]]): (String, List[String]) = {
+      val tempList: List[String] = eachTup.flatten.filter(eachElem => !eachElem.equals(key)).toSet.toList
+      return Tuple2(key, tempList)
+    }
+
+    zhengmaLines = tempLines.toList
+/*
     for (eachSubList <- zhengmaLines) {
       if (eachSubList != null
         && eachSubList.size > 2
@@ -39,6 +55,7 @@ class InputSystemFileReader {
         zhengmaMap = zhengmaMap + (eachSubList(0) -> eachSubList)
       }
     }
+    */
     source.close()
   }
 

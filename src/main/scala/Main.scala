@@ -12,7 +12,6 @@ import scala.util.matching.Regex
   files.loadTzai()
   files.loadZhengma()
 
-  println(files.zmMap("我"))
 
   def shortestStringWithMatch(stringToSearch: String, fileReader: InputSystemFileReader): String = {
     var firstResult: String = if (fileReader.zmMap.contains(stringToSearch)) fileReader.zmMap(stringToSearch) else ""
