@@ -96,6 +96,7 @@ import scala.util.matching.Regex
     for (i <- List.range(0, numberOfChars)) {
       val currentTzai: String = files.tzaiLines(i)(0)
       val result: CharacterBreakdown = charResult(currentTzai, files)
+      breakdownList += result
       if (result.errorMessage.size > 0 && errorTzai == null) {
         println(files.tzaiLines(i))
         println(result)
@@ -108,11 +109,12 @@ import scala.util.matching.Regex
 
   def createComponentFromSpaceString(each: String): ComponentInfo = {
     val splittetString: List[String] = each.split(" ").toList;
-    return ComponentInfo(splittetString(0), splittetString(1))
+    return ComponentInfo(splittetString(0), splittetString.drop(1).mkString(" "))
   }
 
-  val result: ListBuffer[CharacterBreakdown] = goThroughTzaiList(10, files)
+  val result: ListBuffer[CharacterBreakdown] = goThroughTzaiList(20, files)
 
+  //result.toList.foreach(each => println(each))
 
 
   println("end")
