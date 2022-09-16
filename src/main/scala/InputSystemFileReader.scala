@@ -181,7 +181,7 @@ class InputSystemFileReader {
   private val zmT = HashMap("疒" -> "1Pt", "病" -> "1St", "冫" -> "2Ptd", "⺀" -> "2Std",
     "北" -> "2Sti 2Prr", "广" -> "2Ptg", "廣" -> "2Stg", "鹿" -> "2Ptx",
     "⿸广⿻コ⿰丨丨" -> "2Stx")
-  private val zmU = HashMap("忄" -> "1Pu")
+  private val zmU = HashMap("忄" -> "1Pu", "㣺" -> "2Pu")
   private val zmV = HashMap()
   private val zmW = HashMap()
   private val zmX = HashMap()
