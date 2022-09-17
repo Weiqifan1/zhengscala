@@ -22,6 +22,9 @@ import scala.util.matching.Regex
 //skriv en funktion der finder tegn baseret paa zhengma alm koder.
   val dataSearch: DataSearch = new DataSearch
 
+  val treeGen: CharTreeGenerator = new CharTreeGenerator
+  val treeFromChar = treeGen.createElemTreeFromChar("芔", files)
+  println(treeFromChar)
   //-2022-09-17- udkommenter foelgende linjer (dem der er relevante) hvis jeg skal finde nye elementer
   //val get10: List[(String, List[String])] = dataSearch.getPrintableTupples("lz", 600, files)
   //println(get10)
