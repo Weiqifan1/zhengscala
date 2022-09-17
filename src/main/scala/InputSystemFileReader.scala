@@ -134,7 +134,7 @@ class InputSystemFileReader {
     "在" -> "2Sgd 1Pi 1Pb")
   private val zmH = HashMap("匚" -> "1Ph", "臣" -> "1Sh", "一⿰𠄌⿺乀丿" -> "1Sh", "七" -> "2Phd",
     "巠" -> "2Phd 2Pbi", "弋" -> "2Phs", "戈" -> "2Phm", "戊" -> "2Shm",
-    "牙" -> "2Phi", "至" -> "2Phb")
+    "牙" -> "2Phi", "至" -> "2Phb") //𠥫
   private val zmI = HashMap("虫" -> "1Pi", "卜" -> "2Pid", "乍" -> "2Pma 2Sid",
     "虍" -> "2Pih", "虎" -> "2Sih", "止" -> "2Pii", "龰" -> "2Sii", "齒" -> "2Sio")
   private val zmJ = HashMap("口" -> "1Pj", "囗" -> "2Pjd", "因" -> "2Sjd", "足" -> "2Pji", "𧾷" -> "2Sji")
@@ -148,7 +148,9 @@ class InputSystemFileReader {
     "巾" -> "2Pli", "山" -> "2Pll", "罒" -> "2Plk", "四" -> "2Slk", "曾" -> "2Pud 2Slk 1Pk",
     "會" -> "1Pod 1Ps 2Slk 1Pk", "皿" -> "2Plka", "且" -> "2Plc", "⿴且一" -> "2Slc",
     "貝" -> "2Slo", "咼" -> "2Plj", "見" -> "2Slr", "骨" -> "2Plw")
-  private val zmM = HashMap("竹" -> "1Pm", "⿱𠂉丶" -> "1Sm", "舌" -> "2Pmi", "𠂉" -> "2Pma",
+  private val zmM = HashMap(
+    //𣏈 m shape - single stroke
+    "竹" -> "1Pm", "⿱𠂉丶" -> "1Sm", "舌" -> "2Pmi", "𠂉" -> "2Pma",
     "矢" -> "2Sma", "攵" -> "2Pmo", "牛" -> "2Pmb", "失" -> "2Smb 2Pod",
     "𠂒" -> "2Smb", "㐄" -> "2Smb", "气" -> "2Pmy", "氣" -> "2Smy", "毛" -> "2Pmh",
     "禾" -> "2Pmf", "余" -> "2Pod 2Smf", "生" -> "2Pmc", "手" -> "2Pmd",
@@ -181,10 +183,45 @@ class InputSystemFileReader {
   private val zmT = HashMap("疒" -> "1Pt", "病" -> "1St", "冫" -> "2Ptd", "⺀" -> "2Std",
     "北" -> "2Sti 2Prr", "广" -> "2Ptg", "廣" -> "2Stg", "鹿" -> "2Ptx",
     "⿸广⿻コ⿰丨丨" -> "2Stx")
-  private val zmU = HashMap("忄" -> "1Pu", "㣺" -> "2Pu")
-  private val zmV = HashMap()
-  private val zmW = HashMap()
-  private val zmX = HashMap()
+  private val zmU = HashMap("忄" -> "1Pu", "㣺" -> "1Su", "米" -> "2Puf", "丷" -> "1Sud",
+    "②又" -> "1Sud 2Pxs"//𡉢 帰
+    , "②帚" -> "1Sud 2Pxb 2Pww 2Pli", "丷下" -> "2Pua 2Pid", "䒑" -> "2Pua"
+    , "乎" -> "1Pm 2Sua", "⿻干丷" -> "1Ps 2Sua" //平
+    , "火" -> "2Puo", "灬" -> "2Suo"//灰 𤇴
+    , "半" -> "2Pub", "𢆉" -> "2Sub", "龹" -> "2Sub"//伴 㚔 堘 (2 missing)
+    , "⿱䒑⿻二丨" -> "2Puc", "𡗗" -> "2Suc", "𦍌" -> "2Suc"//𡗗 差 𦍼 𢜗 𦍌 羊  𩱁
+  )
+  private val zmV = HashMap(
+    "氵" -> "1Pv", "⿻一氺" -> "1Sd 1Sv", "⿱丷八" -> "1Sv"//𢯼 求 剑 𠦂
+     , "佥" -> "2Pod 2Pbd 2Pvd"
+  )
+  private val zmW = HashMap(
+    "之" -> "1Pw", "辶" -> "1Sw", "令" -> "2Pod 1Sw",
+    "宀" -> "2Pwd", "定" -> "2Swd", "冖" -> "2Pww"//之 辶 令 宀 冖 定
+    , "穴" -> "2Pwo"//穴
+  , "衤" -> "2Pws", "衤" -> "2Pwt"
+    , "戶" -> "2Pwm" //𫉚 戶
+   , "心" -> "2Pwz"//心 忠
+   , "黽" -> "2Pwx", "龜" -> "1Pr 2Swx" //澠 龜
+  )
+  private val zmX = HashMap(
+
+    //z single stroke - 𣭖
+    "糸" -> "1Sz"
+    //mangle 1Pz. maaske fordi den kun findes som simplificeret
+    //𠀔 𠫔 𣦶 𠀅 𢻽 𣨒 㙲
+    , "䜌" -> "2Pzs"  //𦣏
+    ,"巛" -> "2Pzd", "巜" -> "2Szd", "鼠" -> "2Pnb 2Szd"//𡿬 𤰕 𣜌 鼠 𤢪
+    //, "𤢪" -> skal tilfoejes hvis noedvendigt
+    , "厶" -> "2Pzs"
+    //厶 勾 𠇇
+    , "女" -> "2Pzm", "互" -> "2Pbd 2Szm", "彑" -> "2Szm", "𠂈" -> "2Szm"
+    //𠯆 𠯞 彑
+     , "母" -> "2Pzy", "毋" -> "2Szy" //der mangler en 2Szy form
+    //每 毒 𩬍 毋
+     , "爿" -> "2Szi", "凵" -> "2Pzi", "丩" -> "2Szi", "屮" -> "2Szi", "艸" -> "2Szi"
+    //𤖀 𠁫 𠇿 𡴅 𦱶 𡴳 -venstre side af Ding mangler
+  )
   private val zmY = HashMap("阝" -> "1Py", "了" -> "1Py", "刀" -> "2Pyd", "乙" -> "2Pyda",
     "⺄" -> "2Syda", "也" -> "2Pyi", "巴" -> "2Pyia", "子" -> "2Pya",
     "力" -> "2Pym", "⿻丿𠃌" -> "2Sym", "己" -> "2Pyy", "已" -> "2Pyya",

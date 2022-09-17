@@ -21,8 +21,12 @@ import scala.util.matching.Regex
 
 //skriv en funktion der finder tegn baseret paa zhengma alm koder.
   val dataSearch: DataSearch = new DataSearch
-  val get10: List[(String, List[String])] = dataSearch.getPrintableTupples("u", 200, files)
+
+  //-2022-09-17- udkommenter foelgende linjer (dem der er relevante) hvis jeg skal finde nye elementer
+  //val get10: List[(String, List[String])] = dataSearch.getPrintableTupples("lz", 600, files)
   //println(get10)
-  println(files.idsLinesMap("忝"))
+  //println(files.idsLinesMap("芔"))
+  //println(files.zhengmaMap("𩬍"))
+  //println(files.zmMap("平"))
 
   println("end of program")
