@@ -11,6 +11,8 @@ class InputSystemFileReader {
   var zhengmaLines: List[List[String]] = null;
   var zhengmaMap: Map[String, List[String]] = Map();
   var tzaiSimpelList: List[String] = null;
+  var shapeCharsMap: Map[String, String] = Map()
+  var strokesMap: Map[String, String] = Map()
 
   def getIdsLinesMap() : Map[String, String] = idsLinesMap
   def getIdsRawLines() : List[List[String]] = idsRawLines
@@ -75,7 +77,65 @@ class InputSystemFileReader {
     
     //tzaiSimpelList
     tzaiSimpelList = tempLines.toList.map(each => each(0))
-    
+  }
+
+  def loadShapeChars() = {
+    shapeCharsMap = HashMap(
+        "⿰" -> "⿰",
+        "⿱" -> "⿱",
+        "⿲" -> "⿲",
+        "⿳" -> "⿳",
+        "⿴" -> "⿴",
+        "⿵" -> "⿵",
+        "⿶" -> "⿶",
+        "⿷" -> "⿷",
+        "⿸" -> "⿸",
+        "⿹" -> "⿹",
+        "⿺" -> "⿺",
+        "⿻" -> "⿻"
+    )
+  }
+
+
+  def loadStrokes() = {
+    strokesMap = HashMap(
+      "㇀" -> "㇀",
+      "㇁" -> "㇁",
+      "㇂" -> "㇂",
+      "㇃" -> "㇃",
+      "㇄" -> "㇄",
+      "㇅" -> "㇅",
+      "㇆" -> "㇆",
+      "㇇" -> "㇇",
+      "㇈" -> "㇈",
+      "㇉" -> "㇉",
+      "㇊" -> "㇊",
+      "㇋" -> "㇋",
+      "㇌" -> "㇌",
+      "㇍" -> "㇍",
+      "㇎" -> "㇎",
+      "㇏" -> "㇏",
+      "㇐" -> "㇐",
+      "㇑" -> "㇑",
+      "㇒" -> "㇒",
+      "㇓" -> "㇓",
+      "㇔" -> "㇔",
+      "㇕" -> "㇕",
+      "㇖" -> "㇖",
+      "㇗" -> "㇗",
+      "㇘" -> "㇘",
+      "㇙" -> "㇙",
+      "㇚" -> "㇚",
+      "㇛" -> "㇛",
+      "㇜" -> "㇜",
+      "㇝" -> "㇝",
+      "㇞" -> "㇞",
+      "㇟" -> "㇟",
+      "㇠" -> "㇠",
+      "㇡" -> "㇡",
+      "㇢" -> "㇢",
+      "㇣" -> "㇣"
+    )
   }
 
   def loadIds() = {
@@ -128,14 +188,18 @@ class InputSystemFileReader {
     "甘" -> "2Peb", "其" -> "2Pec", "栽" -> "2Peh", "𢦏" -> "2Seh")
   private val zmF = HashMap("木" -> "1Pf", "酉" -> "2Pfd", "覀" -> "2Pfj", "西" -> "2Sfj",
     "車" -> "2Pfk", "專" -> "2Sfk 2Sds", "甫" -> "2Pfb", "雨" -> "2Pfv")
-  private val zmG = HashMap("石" -> "1Pg", "丆" -> "1Sg", "厂" -> "2Pgg", "大" -> "2Pgd",
+  private val zmG = HashMap(
+    "石" -> "1Pg", "丆" -> "1Sg", "厂" -> "2Pgg", "大" -> "2Pgd",
     "𠂇" -> "2Sgd", "辰" -> "2Pgh", "尨" -> "2Sgm", "不" -> "2Pgi", "頁" -> "2Sgo",
     "而" -> "2Pgl", "豕" -> "2Pgq", "𧰨" -> "2Sgq",
-    "在" -> "2Sgd 1Pi 1Pb")
+    "尢" -> "2Sgr"
+    , "在" -> "2Sgd 1Pi 1Pb")
   private val zmH = HashMap("匚" -> "1Ph", "臣" -> "1Sh", "一⿰𠄌⿺乀丿" -> "1Sh", "七" -> "2Phd",
     "巠" -> "2Phd 2Pbi", "弋" -> "2Phs", "戈" -> "2Phm", "戊" -> "2Shm",
     "牙" -> "2Phi", "至" -> "2Phb") //𠥫
-  private val zmI = HashMap("虫" -> "1Pi", "卜" -> "2Pid", "乍" -> "2Pma 2Sid",
+  private val zmI = HashMap(
+    "丨" -> "1Pi",
+    "虫" -> "1Pi", "卜" -> "2Pid", "⺊" -> "2Pid", "乍" -> "2Pma 2Sid",
     "虍" -> "2Pih", "虎" -> "2Sih", "止" -> "2Pii", "龰" -> "2Sii", "齒" -> "2Sio")
   private val zmJ = HashMap("口" -> "1Pj", "囗" -> "2Pjd", "因" -> "2Sjd", "足" -> "2Pji", "𧾷" -> "2Sji")
   private val zmK = HashMap("日" -> "1Pk", "曰" -> "1Sk", "⿻口一" -> "1Sk", "刂" -> "2Pkd", "业" -> "2Pku",
@@ -168,7 +232,9 @@ class InputSystemFileReader {
   private val zmP = HashMap("金" -> "1Pp", "彡" -> "2Ppd", "斤" -> "2Ppd", "𠂆" -> "2Spd",
     "丘" -> "2Ppda", "豸" -> "2Ppq", "瓜" -> "2Pps", "釆" -> "2Pps", "采" -> "2Pps",
     "爪" -> "2Ppv", "爫" -> "2Spv", "舟" -> "2Ppy")
-  private val zmQ = HashMap("月" -> "1Pq", "丹" -> "1Sq 1Ss", "几" -> "2Pqd", "巩" -> "2Pbi 2Sqd",
+  private val zmQ = HashMap(
+    "月" -> "1Pq", "⿵⺆冫" -> "1Pq", //能
+    "丹" -> "1Sq 1Ss", "几" -> "2Pqd", "巩" -> "2Pbi 2Sqd",
     "凡" -> "2Pqda", "風" -> "2Pqi", "九" -> "2Pqy", "丸" -> "2Pqya", "殳" -> "2Pqx",
     "犭" -> "2Pqm")
   private val zmR = HashMap("𠂊" -> "1Sr", "角" -> "1Sr 1Sl 1Pd", "𩵋" -> "1Sr 2Pgd", "魚" -> "1Sr",
@@ -183,7 +249,10 @@ class InputSystemFileReader {
   private val zmT = HashMap("疒" -> "1Pt", "病" -> "1St", "冫" -> "2Ptd", "⺀" -> "2Std",
     "北" -> "2Sti 2Prr", "广" -> "2Ptg", "廣" -> "2Stg", "鹿" -> "2Ptx",
     "⿸广⿻コ⿰丨丨" -> "2Stx")
-  private val zmU = HashMap("忄" -> "1Pu", "㣺" -> "1Su", "米" -> "2Puf", "丷" -> "1Sud",
+  private val zmU = HashMap(
+    //chars that didnt have a shape breakdown:
+    "為" -> "1Sud 1Px 1Px 1Py 2Suo"
+    , "忄" -> "1Pu", "㣺" -> "1Su", "米" -> "2Puf", "丷" -> "1Sud",
     "②又" -> "1Sud 2Pxs"//𡉢 帰
     , "②帚" -> "1Sud 2Pxb 2Pww 2Pli", "丷下" -> "2Pua 2Pid", "䒑" -> "2Pua"
     , "乎" -> "1Pm 2Sua", "⿻干丷" -> "1Ps 2Sua" //平
@@ -205,28 +274,43 @@ class InputSystemFileReader {
    , "黽" -> "2Pwx", "龜" -> "1Pr 2Swx" //澠 龜
   )
   private val zmX = HashMap(
+    "幺" -> "1Pz 2Pzs",
+    "門" -> "2Pxd",//⿵門口
+    "又" -> "2Pxs"
 
-    //z single stroke - 𣭖
-    "糸" -> "1Sz"
-    //mangle 1Pz. maaske fordi den kun findes som simplificeret
-    //𠀔 𠫔 𣦶 𠀅 𢻽 𣨒 㙲
-    , "䜌" -> "2Pzs"  //𦣏
-    ,"巛" -> "2Pzd", "巜" -> "2Szd", "鼠" -> "2Pnb 2Szd"//𡿬 𤰕 𣜌 鼠 𤢪
-    //, "𤢪" -> skal tilfoejes hvis noedvendigt
-    , "厶" -> "2Pzs"
-    //厶 勾 𠇇
-    , "女" -> "2Pzm", "互" -> "2Pbd 2Szm", "彑" -> "2Szm", "𠂈" -> "2Szm"
-    //𠯆 𠯞 彑
-     , "母" -> "2Pzy", "毋" -> "2Szy" //der mangler en 2Szy form
-    //每 毒 𩬍 毋
-     , "爿" -> "2Szi", "凵" -> "2Pzi", "丩" -> "2Szi", "屮" -> "2Szi", "艸" -> "2Szi"
-    //𤖀 𠁫 𠇿 𡴅 𦱶 𡴳 -venstre side af Ding mangler
   )
   private val zmY = HashMap("阝" -> "1Py", "了" -> "1Py", "刀" -> "2Pyd", "乙" -> "2Pyda",
     "⺄" -> "2Syda", "也" -> "2Pyi", "巴" -> "2Pyia", "子" -> "2Pya",
     "力" -> "2Pym", "⿻丿𠃌" -> "2Sym", "己" -> "2Pyy", "已" -> "2Pyya",
     "巳" -> "2Pyyb", "弓" -> "2Pyz", "𢎨" -> "2Syz", "习" -> "2Pyt")
-  private val zmZ = HashMap()
+  private val zmZ = HashMap(
+    "以" -> "1Pz 1Ps 2Pod", //denne har ikke et ids opslag
+  //z single stroke - 𣭖
+  "糸" -> "1Sz"
+  //mangle 1Pz. maaske fordi den kun findes som simplificeret
+  //𠀔 𠫔 𣦶 𠀅 𢻽 𣨒 㙲
+  , "䜌" -> "2Pzs" //𦣏
+  , "巛" -> "2Pzd"
+  , "巜" -> "2Szd"
+  , "鼠" -> "2Pnb 2Szd" //𡿬 𤰕 𣜌 鼠 𤢪
+  //, "𤢪" -> skal tilfoejes hvis noedvendigt
+  , "厶" -> "2Pzs"
+  //厶 勾 𠇇
+  , "女" -> "2Pzm"
+  , "互" -> "2Pbd 2Szm"
+  , "彑" -> "2Szm"
+  , "𠂈" -> "2Szm"
+  //𠯆 𠯞 彑
+  , "母" -> "2Pzy"
+  , "毋" -> "2Szy" //der mangler en 2Szy form
+  //每 毒 𩬍 毋
+  , "爿" -> "2Szi"
+  , "凵" -> "2Pzi"
+  , "丩" -> "2Szi"
+  , "屮" -> "2Szi"
+  , "艸" -> "2Szi"
+  //𤖀 𠁫 𠇿 𡴅 𦱶 𡴳 -venstre side af Ding mangler
+  )
 
   var zmMap: Map[String, String] =
     zmA ++ zmB ++ zmC ++ zmD ++ zmE ++ zmF ++
