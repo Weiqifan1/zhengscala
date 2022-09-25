@@ -26,7 +26,7 @@ import scala.util.matching.Regex
   val dataSearch: DataSearch = new DataSearch
 
   val treeGen: CharTreeGenerator = new CharTreeGenerator
-  val treeFromChar = treeGen.createElemTreesFromChars(files, 100, -1)
+  val treeFromChar = treeGen.createElemTreesFromChars(files, 15000, -1)
   val tupples: List[(String, List[String], CustomTree, List[CustomTree], List[CustomTree])] =
     treeFromChar.map(each => (each.elemStr, each.officialInputCodes, each.binaryTree, each.flattenedTree, each.problemElems))
   val problemTupples = tupples.filter(each => !each._5.isEmpty)
@@ -37,8 +37,12 @@ import scala.util.matching.Regex
   //-2022-09-17- udkommenter foelgende linjer (dem der er relevante) hvis jeg skal finde nye elementer
   //val get10: List[(String, List[String])] = dataSearch.getPrintableTupples("lz", 600, files)
   //println(get10)
-  //println(files.idsLinesMap("芔"))
-  println(files.zhengmaMap("幺")) //𩬍
-  //println(files.zmMap("平"))
-
+  println(files.idsLinesMap("巤"))
+  //println(files.zmMap("幺")) //𩬍
+  //println("曲" + files.zhengmaMap.get("曲")) // 豆  東  㠯
+  //println("豆" + files.zhengmaMap.get("豆"))
+  println("儰" + files.zhengmaMap.get("儰"))// 斷 㡭斤  𢆸𢆸  ⿺𠃊𢆶
+  println("嬽" + files.zhengmaMap.get("嬽"))
+  println("𡚇" + files.zhengmaMap.get("𡚇")) //⿱⿱亠⿲刀丫③⿲丿二丨
+  //println(files.zhengmaMap.get("㠯"))
   println("end of program")
