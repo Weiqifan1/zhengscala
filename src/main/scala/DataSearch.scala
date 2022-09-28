@@ -1,4 +1,4 @@
-import caseClasses.CharacterBreakdown
+import caseClasses.{CharContent, CharacterBreakdown, CustomTree}
 
 //fileReader: InputSystemFileReader
 class DataSearch {
@@ -9,6 +9,32 @@ class DataSearch {
     val lines = getZhengmaLines(strToGet, numOfLines, fileReader)
     val res: List[CharacterBreakdown] = lines.map(each => breakdownUtil.charResult(each(0), fileReader))
     res
+
+  def getElemsWithoutTDorLRshapemarker(fileReader: InputSystemFileReader): List[CharContent] =
+    val treeGen: CharTreeGenerator = new CharTreeGenerator
+    val treeFromChar: List[CharContent] = treeGen.createElemTreesFromChars(fileReader, 15000, -1)
+    val shapes: List[String] = fileReader.shapeCharsMap.keys.toList
+    val treesWithNoShapes: List[CharContent] = treeFromChar.filter(!hasNeededShape(shapes, _))
+    return treesWithNoShapes
+
+    //CharContent(override val elemStr: String,
+  //                       freqInfo: List[String],
+  //                       officialInputCodes: List[String],
+  //                       binaryTree: CustomTree,
+  //                       flattenedTree: List[CustomTree],
+  //                       problemElems: List[CustomTree]) extends CustomTree
+
+  private def hasNeededShape(shapes: List[String], content: CharContent): Boolean =
+    val flattenedTreeFirst: CustomTree = content.flattenedTree(0)
+    val firstElemOfStr: String = flattenedTreeFirst.elemStr.take(1)
+    val origShapeOpt: String = content.originalShapeLookup
+    val finalOrig: String = if (origShapeOpt.length > 0) then origShapeOpt.take(1) else ""
+    val shapeInOrigShapeLokup: Boolean = shapes.contains(finalOrig)
+    val shapeInFlattenedTree: Boolean = shapes.contains(firstElemOfStr)
+    if (shapeInOrigShapeLokup) then true
+    else if(shapeInFlattenedTree) then true
+    else false
+
 
   def getPrintableTupples(strToGet: String, numOfLines: Int, fileReader: InputSystemFileReader): List[(String, List[String])] =
     val lines = getZhengmaLines(strToGet, numOfLines, fileReader)

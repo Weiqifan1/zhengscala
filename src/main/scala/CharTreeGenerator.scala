@@ -24,7 +24,9 @@ class CharTreeGenerator {
     val zhengLookup: List[String] =
       if fileReader.zhengmaMap.get(systemLines(0)).isEmpty then List()
       else fileReader.zhengmaMap.get(systemLines(0)).get
-    CharContent(systemLines(0), systemLines, zhengLookup, binaryTree, flattenTree, issueElems)
+    val originalLookupOpt: Option[String] = fileReader.idsLinesMap.get(systemLines(0))
+    val origLookup: String = if (originalLookupOpt.isDefined) originalLookupOpt.get else ""
+    CharContent(systemLines(0), systemLines, zhengLookup, binaryTree, flattenTree, issueElems, origLookup)
 
   def flattenBinary(input: CustomTree): List[CustomTree] =
     input match

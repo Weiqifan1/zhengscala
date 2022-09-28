@@ -14,4 +14,5 @@ case class CharContent(override val elemStr: String,
                        officialInputCodes: List[String],
                        binaryTree: CustomTree,
                        flattenedTree: List[CustomTree],
-                       problemElems: List[CustomTree]) extends CustomTree
+                       problemElems: List[CustomTree],
+                       originalShapeLookup: String) extends CustomTree
