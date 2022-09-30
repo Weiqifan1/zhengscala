@@ -4,11 +4,11 @@ class CodeAnalyser {
 
 
   def mismatchingCodes(fileReader: InputSystemFileReader): List[(String, String, List[String], CharContent)] =
-    val newCodeToContent: List[(String, CharContent)] = getCode(fileReader)
-    val mismatchRemoved: List[(String, CharContent)] = newCodeToContent
-      .filter(each => !newCodeMatches(each._1, each._2.officialInputCodes))
+    val newCodeToContent: List[(String, String, CharContent)] = getCode(fileReader)
+    val mismatchRemoved: List[(String, String, CharContent)] = newCodeToContent
+      .filter(each => !newCodeMatches(each._1, each._3.officialInputCodes))
     val displayInfo: List[(String, String, List[String], CharContent)] =
-      mismatchRemoved.map(each => (each._1, each._2.freqInfo(3), each._2.officialInputCodes, each._2))
+      mismatchRemoved.map(each => (each._1, each._3.freqInfo(3), each._3.officialInputCodes, each._3))
     return displayInfo
 
   private def newCodeMatches(newCode: String, officialCodes: List[String]): Boolean =
@@ -30,13 +30,42 @@ class CodeAnalyser {
     val matchIfVVadded = officialCodes.contains(str ++ "vv")
     if matchIfVVadded then true else false
 
-  def getCode(fileReader: InputSystemFileReader): List[(String, CharContent)] =
+  def getInconsistencies(fileReader: InputSystemFileReader): List[List[(String, String, CharContent)]] =
+    val codes = getCode(fileReader)
+    val grupByCodes = codes.groupBy(c => c._1).values.toList
+    val onlyClash = grupByCodes.filter(each => each.size > 1).toList //273
+    val allDiffFullCodeLengths = onlyClash.filter(each => twoOrMoreSameElems(each)) //129
+    //59 tilbagevaerende konflikter er for mange. proev at
+    //kigge de 129 igennem og se efter stroeg. maaske sidste stroeg fra 1. og 2. element.
+    //val allDiffStartEndInitials = allDiffFullCodeLengths.filter(each => compareFandSinit(each)) //59
+    return allDiffFullCodeLengths
+
+  private def compareFandSinit(value: List[(String, String, CharContent)]): Boolean =
+    val newInp: List[List[String]] = value.map(each => each._2.split(" ").toList)
+    val firstAndSecInitials: List[String] = newInp.map(each => getFirstAndSecInit(each))
+    return firstAndSecInitials.toSet.size > 1
+
+  private def getFirstAndSecInit(i: List[String]): String =
+    i match
+      //case Nil => throw "getFirstAndSecInit empty code list"
+      case x :: Nil => x.substring(0, 2)
+      case _ => i(0).substring(0,2) ++ i.last.substring(0,2)
+  private def twoOrMoreSameElems(input: List[(String, String, CharContent)]): Boolean =
+    val newInp = input.map(each => each._2.split(" ").size)
+    return newInp.toSet.size != newInp.size
+
+  def getCode(fileReader: InputSystemFileReader): List[(String, String, CharContent)] =
     val treeGen: CharTreeGenerator = new CharTreeGenerator()
     val content: List[CharContent] = treeGen.createElemTreesFromChars(fileReader, 6000, -1)
     //val contentList
-    val codeTupple: List[(String, CharContent)] = content.map(each => (getCodeFromContent(each), each))
+    val codeTupple: List[(String, String, CharContent)] = content
+      .map(each => (getCodeFromContent(each), getLongCodeFromContent(each), each))
     codeTupple
 
+  private def getLongCodeFromContent(content: CharContent): String =
+    val inputLeafs: List[LeafInput] = content.flattenedTree.map(each => treeIsInputLeaf(each)).filter(x => x != null)
+    val listOfInputs: String = inputLeafs.map(each => each.inputCode).mkString(" ")
+    return listOfInputs
   private def getCodeFromContent(content: CharContent): String =
     val inputLeafs: List[LeafInput] = content.flattenedTree.map(each => treeIsInputLeaf(each)).filter(x => x != null)
     val listOfInputs: String = inputLeafs.map(each => each.inputCode).mkString(" ")

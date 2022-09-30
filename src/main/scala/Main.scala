@@ -35,7 +35,8 @@ import scala.util.matching.Regex
   //val shapeTest = dataSearch.getElemsWithoutTDorLRshapemarker(files)
   val analyser: CodeAnalyser = new CodeAnalyser
   val codes = analyser.mismatchingCodes(files)
-  val fullCodes: List[(String, CharContent)] = analyser.getCode(files)
+  val fullCodes: List[(String, String, CharContent)] = analyser.getCode(files)
+  val clashes: List[List[(String, String, CharContent)]] = analyser.getInconsistencies(files)
 
   val AandZcodes = codes.filter(each => each._1.contains("az"))
   val SandHcodes = codes.filter(each => each._1.contains("sh"))
