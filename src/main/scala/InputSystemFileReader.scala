@@ -175,257 +175,268 @@ class InputSystemFileReader {
 
 
   private val zmA = HashMap(
-    "㐬" -> "1Pa 2Pzs 2Pnd",//流official vszn  compare 統  official zszr
+    "㐬" -> "1PAa 2PSzs 2PXnd",//流official vszn  compare 統  official zszr
     //but in ids it is always a zs execpt in 流
-    "丐" -> "1Pa 2Pi 1Pz", //"丏" -> "1Pa 1Pz 1Py",//,眄//
-    "与" -> "1Pa 1Pz 1Pa", "平" -> "1Pa 2Sua",
-    "疌" -> "1Pa 2Sxb 2Sii", "丈" -> "1Pa 2Pos", //捷
-    "末" -> "1Pa 1Pf", "于" -> "1Pa 1Sd",//宇
-    "豆" -> "1Pa 1Pj 2Pua", "㥑" -> "1Pa 2Pnk 2Pww 2Pwz",//優
-    "一" -> "1Pa", "丁" -> "2Pai", "㇀" -> "1Ta",
-      "瓦" -> "1Pa 1Pz 1Py 1Pz")
+    "丐" -> "1PAa 2PAi 1PXz", //"丏" -> "1Pa 1Pz 1Py",//,眄//
+    "与" -> "1PAa 1PXz 1PAa", "平" -> "1PAa 2SIua",
+    "疌" -> "1PAa 2SIxb 2SSii", "丈" -> "1PAa 2PSos", //捷
+    "末" -> "1PAa 1PSf", "于" -> "1PAa 1SId",//宇
+    "豆" -> "1PAa 1PAj 2PAua", "㥑" -> "1PAa 2PAnk 2PXww 2PSwz",//優
+    "一" -> "1PAa", "丁" -> "2PIai", "㇀" -> "1TAa",
+      "瓦" -> "1PAa 1PXz 1PXy 1PSs")
   private val zmB = HashMap(
-    "元" -> "2Pbd 2Prd", "⿻二丨" -> "2Sbi",//完 舉
-    "亙" -> "2Pbd 2Trs", "𠁁" -> "2Sbz", "壴" -> "1Sb 1Pj 2Pua",//恆 斲 喜
-    "未" -> "2Pbd 2Pko", "井" -> "2Pbd 2Snd",
-    "五" -> "2Pbi 1Px", "赤" -> "1Pb 2Snd 1Po",
-    "土" -> "1Pb", "士" -> "1Sb", "二" -> "2Pbd", "示" -> "2Pbk",
-    "走" -> "2Pbo", "耂" -> "2Pbm", "者" -> "2Sbm", "工" -> "2Pbi","亞" -> "2Pbz")
+    "元" -> "2PAbd 2PXrd", "⿻二丨" -> "2SIbi",//完 舉
+    "亙" -> "2PAbd 2TSrs", "𠁁" -> "2SAbz", "壴" -> "1SAb 1PAj 2PAua",//恆 斲 喜
+    "未" -> "2PAbd 2PSko", "井" -> "2PAbd 2SInd",
+    "五" -> "2PAbi 1PXx", "赤" -> "1PAb 2SInd 1PSo",
+    "土" -> "1PAb", "士" -> "1SAb", "二" -> "2PAbd", "示" -> "2PSbk",
+    "走" -> "2PSbo", "耂" -> "2PMbm", "者" -> "2SAbm", "工" -> "2PAbi","亞" -> "2PAbz")
   private val zmC = HashMap(
-    "王" -> "1Pc", "班" -> "1Pc 2Sud 1Pc", "𡗗" -> "2Pco",
-    "三" -> "2Pcd", "玉" -> "2Pcs", "耳" -> "2Pce", "馬" -> "2Pcu",
-    "髟" -> "2Pch", "長" -> "2Sch", "镸" -> "2Sch", "丰" -> "2Pci", "龶" -> "2Sci",
-    "豐" -> "2Sci", "耒" -> "2Pck", "鬥" -> "2Pcc", "𡗗" -> "2Pco", "春" -> "2Sco")
+    "王" -> "1PAc", "班" -> "1PAc 2SMud 1PAc", "𡗗" -> "2PSco",
+    "三" -> "2PAcd", "玉" -> "2PScs", "耳" -> "2PIce", "馬" -> "2PScu",
+    "髟" -> "2PMch", "長" -> "2SSch", "镸" -> "2SSch", "丰" -> "2PIci", "龶" -> "2SAci",
+    "豐" -> "2SAci", "耒" -> "2PSck", "鬥" -> "2PIcc", "𡗗" -> "2PSco", "春" -> "2SAco")
   private val zmD = HashMap(
-    "才" -> "1Sd 1Pm",
-    "事" -> "1Sd 1Pj 2Pxb",
-    "扌" -> "1Pd", "寸" -> "2Pds")
+    "才" -> "1SId 1PMm",
+    "事" -> "1SId 1PAj 2PIxb",
+    "扌" -> "1PAd", "寸" -> "2PSds")
 
   private val zmE = HashMap(
-    "干" -> "1Pa 2Ped", "艹" -> "1Te", //繭
-    "𠀎" -> "2Seb", "世" -> "1Pe 1Pa 1Pz", "甚" -> "2Pec 1Pz",
-    "斗" -> "2Std 2Ped", "華" -> "1Pe 1Pa 1Pe 2Sbi",
-    "卌" -> "1Te", "艹" -> "1Pe", "廾" -> "1Se", "十" -> "2Ped", "革" -> "2Pee",
-    "廿" -> "2Pea", "龷" -> "2Sea", "卌一" -> "2Sea", "帶" -> "2Sea 2Pww 2Pll",
-    "甘" -> "2Peb", "其" -> "2Pec", "栽" -> "2Peh", "𢦏" -> "2Seh")
+    "干" -> "1PAa 2PIed", "艹" -> "1TAe", //繭
+    "𠀎" -> "2SAeb", "世" -> "1PAe 1PAa 1PXz", "甚" -> "2PSec 1PXz",
+    "斗" -> "2SStd 2PIed", "華" -> "1PAea 1PIe 2SIbi",
+    "卌" -> "1TIe", "艹" -> "1PIe", "廾" -> "1SIe", "十" -> "2PIed", "革" -> "2PIee",
+    "廿" -> "2PAea", "龷" -> "2SAea", "卌一" -> "2SAea", "帶" -> "2SXea 2PXww 2PIll",
+    "甘" -> "2PAeb", "其" -> "2PSec", "栽" -> "2SSeh", "𢦏" -> "2PSeh")
   private val zmF = HashMap(
-    "𣎳" -> "1Pf", "襾" -> "2Tfj",
-    "柬" -> "1Pf 2Slk", "朿" -> "1Pf 2Pld", "惠" -> "2Sfk 2Pwz",
-    "本" -> "1Pf 1Pa", "東" -> "1Pf 1Pk", "束" -> "1Pf 1Pj",
-    "木" -> "1Pf", "朩" -> "1Pf", "酉" -> "2Pfd", "覀" -> "2Pfj", "西" -> "2Sfj",
-    "車" -> "2Pfk", "專" -> "2Sfk 2Sds", "甫" -> "2Pfb", "雨" -> "2Pfv")
+    "𣎳" -> "1PXf", "襾" -> "2TAfj",
+    "柬" -> "1PSf 2SlAk", "朿" -> "1PSf 2PXld", "惠" -> "2SSfk 2PSwz",
+    "本" -> "1PSf 1PAa", "東" -> "1PSf 1PAk", "束" -> "1PSf 1PAj",
+    "木" -> "1PSf", "朩" -> "1PSf", "酉" -> "2PAfd", "覀" -> "2PAfj", "西" -> "2SAfj",
+    "車" -> "2PIfk", "專" -> "2SSfk 2SSds", "甫" -> "2PSfb", "雨" -> "2PSfv")
   private val zmG = HashMap(
-    "存" -> "2Sgd 1Pi 2Pya", "乑" -> "2Sgq", "尤" -> "2Pgr",//就
+    "存" -> "2SMgd 1PIi 2PAya", "乑" -> "2SSgq", "尤" -> "2PSgr",//就
     //存  眾--乑=2Pgq "眾" -> "2Plk 1Pm 1Ps 2Pod 2Pod" //⿱取乑 聚cexg
-    "犬" -> "2Pgd 1Ps", "面" -> "1Sg 2Pjd 2Skd",
-    "石" -> "1Pg", "丆" -> "1Sg", "厂" -> "2Pgg", "大" -> "2Pgd",
-    "𠂇" -> "2Sgd", "辰" -> "2Pgh", "尨" -> "2Sgm", "不" -> "2Pgi", "頁" -> "2Sgo",
-    "而" -> "2Pgl", "豕" -> "2Pgq", "𧰨" -> "2Sgq",
-    "尢" -> "2Sgr", "兀" -> "2Sgr" //光 --ids: koar
-    , "在" -> "2Sgd 1Pi 1Pb")
+    "犬" -> "2PSgd 1PSs", "面" -> "1SMg 2PAjd 2SAkd",
+    "石" -> "1PAg", "丆" -> "1SMg", "厂" -> "2PMgg", "大" -> "2PSgd",
+    "𠂇" -> "2SMgd", "辰" -> "2PSgh", "尨" -> "2SSgm", "不" -> "2PSgi", "頁" -> "2SSgo",
+    "而" -> "2PIgl", "豕" -> "2PSgq", "𧰨" -> "2SSgq",
+    "尢" -> "2SXgr", "兀" -> "2SXgr" //光 --ids: koar
+    , "在" -> "2SMgd 1PIi 1PAb")
   private val zmH = HashMap(
-    "巨" -> "1Ph 1Sx", "𦣞" -> "1Sh",//熙
-    "戊" -> "2Shm", "旡" -> "1Ph 2Prd", "戉" -> "2Phm 1Pz",
-    "匚" -> "1Ph", "臣" -> "1Sh", "一⿰𠄌⿺乀丿" -> "1Sh", "⿰𠄌⿺乀丿" -> "1Sh", //展
-    "七" -> "2Phd", "巠" -> "2Phd 2Pbi", "弋" -> "2Phs", "戈" -> "2Phm", "戊" -> "2Shm",
-    "牙" -> "2Phi", "至" -> "2Phb") //𠥫
+    "巨" -> "1PXh 1SAx", "𦣞" -> "1SXh",//熙
+    "戊" -> "2SShm", "旡" -> "1PXh 2PXrd", "戉" -> "2PShm 1PXz",
+    "匚" -> "1PXh", "臣" -> "1SXh", "一⿰𠄌⿺乀丿" -> "1SSh", "⿰𠄌⿺乀丿" -> "1SSh", //展
+    "七" -> "2PXhd", "巠" -> "2PXhd 2PAbi", "弋" -> "2PShs", "戈" -> "2PShm", "戊" -> "2SShm",
+    "牙" -> "2PMhi", "至" -> "2PAhb") //𠥫
   private val zmI = HashMap(
-    "⿴卝丨" -> "1Pi 1Pi 1Pa 1Pi 1Pa", //羋
-    "𢇍" -> "1Pz 2Pzs 1Pz 2Pzs 1Pa 1Pz 2Pzs 1Pz 2Pzs 1Pi 1Pa", // 躖
-    "凸" -> "1Pi 1Pa 1Pi 1Py 1Pa", "凹" -> "1Pi 1Py 1Pi 1Px 1Pa",
-    "壺" -> "1Sb 2Pww 1Pi 1Pa 1Pz 1Pz 1Pi 1Pa 1Pi 1Pa", //sammenlign 亞bz
-    "丨" -> "1Pi", "亅" -> "1Pi", "虛" -> "2Pih 2Tku",
-    "虫" -> "1Pi", "卜" -> "2Pid", "⺊" -> "2Pid", "乍" -> "2Pma 2Sid",
-    "虍" -> "2Pih", "虎" -> "2Sih",
-    "止" -> "2Pii", "延" -> "1Sy 1Pm 2Pii", //"⿱丿③" -> "1Pm 2Pii", //延
-    "龰" -> "2Sii", "齒" -> "2Sio")
+    "⿴卝丨" -> "1PIi 1PIi 1PAa 1PIi 1PAa", //羋
+    "𢇍" -> "1PXz 2PSzs 1PXz 2PSzs 1PAa 1PXz 2PSzs 1PXz 2PSzs 1PIi 1PAa", // 躖
+    "凸" -> "1PIi 1PAa 1PIi 1PXy 1PAa", "凹" -> "1PIi 1PXy 1PIi 1PXx 1PAa",
+    "壺" -> "1SAb 2PXww 1PIi 1PAa 1PXz 1PXz 1PIi 1PAa 1PIi 1PAa", //sammenlign 亞bz
+    "丨" -> "1PIi", "亅" -> "1PIi", "虛" -> "2PXih 2TAku",
+    "虫" -> "1PSi", "卜" -> "2PSid", "⺊" -> "2PAid", "乍" -> "2PAma 2SAid",
+    "虍" -> "2PXih", "虎" -> "2SXih",
+    "止" -> "2PAii", "延" -> "1SSy 1PMm 2PAii", //"⿱丿③" -> "1Pm 2Pii", //延
+    "龰" -> "2SSii", "齒" -> "2SIio")
   private val zmJ = HashMap(
-    "囙" -> "2Pjd 1Sx", "呂" -> "1Pj 2Snj", //宮
-    "口" -> "1Pj", "囗" -> "2Pjd", "因" -> "2Sjd", "足" -> "2Pji", "𧾷" -> "2Sji")
+    "囙" -> "2PAjd 1SAx", "呂" -> "1PAj 2SAnj", //宮
+    "口" -> "1PAj", "囗" -> "2PAjd", "因" -> "2SAjd", "足" -> "2PSji", "𧾷" -> "2SAji")
   private val zmK = HashMap(
-    "曳" -> "1Pk 1Pz 1Pm", "里" -> "1Pk 1Pb", "⿻甲一" -> "1Pk 2Ped", //洩 單
-    "曲" -> "1Pk 2Skd", "禺" -> "1Pk 2Pl 2Szs", "畢" -> "1Pk 1Pe 2Sbi",
-    "日" -> "1Pk", "曰" -> "1Sk", "⿻口一" -> "1Sk", "刂" -> "2Pkd", "业" -> "2Pku",
-    "業" -> "2Sku", "婁" -> "2Pkj 2Pzm", "非" -> "2Pkc", "小" -> "2Pko", "⺌" -> "2Sko",
-    "𣥂" -> "2Sko", "水" -> "2Pkv", "氺" -> "2Skv", "㡀" -> "2Skv 2Pld", "眔" -> "2Plk 2Skv",
-    "田" -> "2Pki", "由" -> "2Pkia", "甲" -> "2Pkib", "申" -> "2Pkic")
+    "曳" -> "1PAk 1PXz 1PMm", "里" -> "1PAk 1PAb", "⿻甲一" -> "1PAk 2PIed", //洩 單
+    "曲" -> "1PAk 2SIkd", "禺" -> "1PAk 2PXl 2SSzs", "畢" -> "1PAk 1PIe 2SIbi",
+    "日" -> "1PAk", "曰" -> "1SAk", "⿻口一" -> "1SAk", "刂" -> "2PIkd", "业" -> "2PAku",
+    "業" -> "2SSku", "婁" -> "2PAkj 2PAzm", "非" -> "2PAkc", "小" -> "2PSko", "⺌" -> "2SMko",
+    "𣥂" -> "2SMko", "水" -> "2PSkv", "氺" -> "2SSkv", "㡀" -> "2SSkv 2PXld", "眔" -> "2PAlk 2SSkv",
+    "田" -> "2PAki", "由" -> "2PAkia", "甲" -> "2PIkib", "申" -> "2PIkic")
   private val zmL = HashMap(
-    "崋" -> "2Pll 1Pa 2Te 2Sbi", "𡚇" -> "2Plk 1Pi 1Pa 1Pz 2Plk 2Pgd",//嬽
-    "典" -> "2Pld 2Sea 1Po", "鼎" -> "1Pl 2Szi 2Snx", "冊" -> "2Pld 1Pe",
+    "崋" -> "2PIll 1PAa 2TIe 2SIbi", "𡚇" -> "2PAlk 1PIi 1PAa 1PXz 2PAlk 2PSgd",//嬽
+    "典" -> "2PXld 2SAea 1PSo", "鼎" -> "1PAl 2SMzi 2SXnx", "冊" -> "2PXld 1PIe",
     //"眾" -> "2Plk 1Pm 1Ps 2Pod 2Pod",
     //眾--乑=2Pgq "眾" -> "2Plk 1Pm 1Ps 2Pod 2Pod"
-    "冉" -> "2Pld 1Pb", "央" -> "2Pld 2Pgd", "⺆" -> "2Pld",//調
-    "黑" -> "2Slk 1Pb 2Suo", "肉" -> "2Pld 2Pod 2Pod",
-    "目" -> "1Pl", "冂" -> "2Pld", "同" -> "2Sld 1Pa 1Pj", "𠔼" -> "2Sld 1Pa",
-    "冋" -> "2Sld 1Pj", "冏" -> "2Sld 2Prd 1Pj", "⿵冂𢆉" -> "2Sld 2Pua 2Ped" , "用" -> "2Sld 2Sbi",
-    "甬" -> "2Sxs 2Sld 2Sbi", "角" -> "1Sr 2Sld 1Pb", "𠕁" -> "2Sld 1Se", "岡" -> "2Sld 2Pua 2Pll",
-    "巾" -> "2Pli", "山" -> "2Pll", "罒" -> "2Plk", "四" -> "2Slk", "曾" -> "2Pud 2Slk 1Pk",
-    "會" -> "1Pod 1Ps 2Slk 1Pk", "皿" -> "2Plka", "且" -> "2Plc", "⿴且一" -> "2Slc",
-    "貝" -> "2Slo", "咼" -> "2Plj", "見" -> "2Slr", "骨" -> "2Plw")
+    "冉" -> "2PXld 1PAb", "央" -> "2PXld 2PSgd", "⺆" -> "2PXld",//調
+    "黑" -> "2SAlk 1PAb 2SSuo", "肉" -> "2PXld 2PSod 2PSod",
+    "目" -> "1PAl", "冂" -> "2PXld", "同" -> "2SXld 1PAa 1PAj", "𠔼" -> "2SXld 1PAa",
+    "冋" -> "2SXld 1PAj", "冏" -> "2SXld 2PXrd 1PAj", "⿵冂𢆉" -> "2SXld 2PAua 2PIed" ,
+    "用" -> "2SXld 2SIbi",
+    "甬" -> "2SSxs 2SXld 2SIbi", "角" -> "1SXr 2SXld 1PIb", "𠕁" -> "2SXld 1SIe",
+    "岡" -> "2SXld 2PAua 2PIll",
+    "巾" -> "2PXli", "山" -> "2PIll", "罒" -> "2PAlk", "四" -> "2SAlk", "曾" -> "2PMud 2SAlk 1PAk",
+    "會" -> "1PSod 1PSs 2SAlk 1PAk", "皿" -> "2PAlka", "且" -> "2PAlc", "⿴且一" -> "2SAlc",
+    "貝" -> "2SSlo", "咼" -> "2PAlj", "見" -> "2SXlr", "骨" -> "2PAlw")
   private val zmM = HashMap(
     //𣏈 m shape - single stroke
-    "禹" -> "1Pm 1Pi 2Pld", "㇓" -> "1Pm",//"凞" -> "2Ptd 1Pm 1Sh ",//㇓
-    "熏" -> "1Pm 2Ped 2Slk 1Pb 2Suo",//勳 熏(mebu, ml, mlu)
-    "𦈢" -> "2Pma 2Ped 2Pii ", //卸maiy 𦈢(maai, maei, mbii)
-    "垂" -> "1Pm 2Ped 1Pe 1Pb", "朱" -> "1Pm 2Pbd 2Pko", //睡
-    "年" -> "2Pma 2Smb", "重" -> "1Pm 2Ped 1Pk 1Pb", "丿" -> "1Pm",
-    "竹" -> "1Pm", "⿱𠂉丶" -> "1Sm", "舌" -> "2Pmi", "𠂉" -> "2Pma",
-    "矢" -> "2Sma", "攵" -> "2Pmo", "牛" -> "2Pmb", "失" -> "2Smb 2Pod",
-    "𠂒" -> "2Smb", "㐄" -> "2Smb", "气" -> "2Pmy", "氣" -> "2Smy", "毛" -> "2Pmh",
-    "禾" -> "2Pmf", "余" -> "2Pod 2Smf", "生" -> "2Pmc", "手" -> "2Pmd",
-    "龵" -> "2Smd", "千" -> "2Pme",
-    "缶" -> "2Pma 2Ped 2Pzi", "我" -> "2Smd 2Phm")
+    "禹" -> "1PMm 1PSi 2PXld", "㇓" -> "1PMm",//"凞" -> "2Ptd 1Pm 1Sh ",//㇓
+    "熏" -> "1PMm 2PIed 2SAlk 1PAb 2SSuo",//勳 熏(mebu, ml, mlu)
+    "𦈢" -> "2PAma 2PIed 2PAii ", //卸maiy 𦈢(maai, maei, mbii)
+    "垂" -> "1PMm 2PIed 1PIe 1PAb", "朱" -> "1PMm 2PAbd 2PSko", //睡
+    "年" -> "2PAma 2SImb", "重" -> "1PMm 2PIed 1PAk 1PAb", "丿" -> "1PMm",
+    "竹" -> "1PIm", "⿱𠂉丶" -> "1SSm", "舌" -> "2PAmi", "𠂉" -> "2PAma",
+    "矢" -> "2SSma", "攵" -> "2PSmo", "牛" -> "2PImb", "失" -> "2SAmb 2PSod",
+    "𠂒" -> "2SAmb", "㐄" -> "2SImb", "气" -> "2PXmy", "氣" -> "2SSmy", "毛" -> "2PXmh",
+    "禾" -> "2PSmf", "余" -> "2PSod 2SSmf", "生" -> "2PAmc", "手" -> "2PImd",
+    "龵" -> "2SMmd", "千" -> "2PIme",
+    "缶" -> "2PAma 2PIed 2PIzi", "我" -> "2SAmd 2PShm")
   private val zmN = HashMap(
-    "盥" -> "2Snb 2Pkv 3Plka", //"與" -> "",
-    "段" -> "2Tnc 2Pqd 2Pxs", "雋" -> "2Pni 1Pi 1Py 1Pi 1Py",
-    "亻" -> "1Pn", "片" -> "2Pnx",
-    "川" -> "2Pnd", "⿰丿丨" -> "2Snd", "⿲丿二丨" -> "2Snd", "巟" -> "2Psh 2Pnd",//齊
-    "𣶒" -> "2Snd", "臼" -> "2Pnb", "臼丨" -> "2Snb",
-    "與" -> "2Snb 2Tid 1Po", "𦥯" -> "2Snb 2Pos 2Pos", "𦥑冖" -> "2Snb",
-    "鬼" -> "2Pnj", "⿻白丿" -> "2Snj", "⿱丿囗" -> "2Snj",
-    "白" -> "2Pnk", "自" -> "2Pnl", "⿱丿冂" -> "2Snl", "隹" -> "2Pni", "身" -> "2Pnc")
+    "盥" -> "2SAnb 2PSkv 3PAlka", //"與" -> "",
+    "段" -> "2TAnc 2PXqd 2PSxs", "雋" -> "2PAni 1PIi 1PXy 1PIi 1PXy",
+    "亻" -> "1PIn", "片" -> "2PXnx",
+    "川" -> "2PInd", "⿰丿丨" -> "2SInd", "⿲丿二丨" -> "2SInd", "巟" -> "2PXsh 2PXnd",//齊
+    "𣶒" -> "2SAnd", "臼" -> "2PAnb", "臼丨" -> "2SInb",
+    "與" -> "2SAnb 2TIid 1PSo", "𦥯" -> "2SAnb 2PSos 2PSos", "𦥑冖" -> "2SXnb",
+    "鬼" -> "2PSnj", "⿻白丿" -> "2SMnj", "⿱丿囗" -> "2SAnj",
+    "白" -> "2PAnk", "自" -> "2PAnl", "⿱丿冂" -> "2SXnl", "隹" -> "2PAni", "身" -> "2PMnc")
   private val zmO = HashMap(
-    "史" -> "1Pj 2Pos", "谷" -> "1Po 2Pod 1Pj",//聲 bxqc
-    "八" -> "1Po", "⿱丿丿" -> "2Pod", "人" -> "2Pod",
-    "入" -> "2Poda", "乂" -> "2Pos", "㐅" -> "2Pos", "⿻⿱丿丿丶" -> "2Sos",
-    "𠚍" -> "2Sos 2Pzi", "彳" -> "2Poi", "行" -> "2Soi",
-    "食" -> "2Pox", "飠" -> "2Sox",
+    "史" -> "1PAj 2PSos", "谷" -> "1PSo 2PSod 1PAj",//聲 bxqc
+    "八" -> "1PSo", "⿱丿丿" -> "2PMod", "人" -> "2PSod",
+    "入" -> "2PModa", "乂" -> "2PSos", "㐅" -> "2PSos", "⿻⿱丿丿丶" -> "2SSos",
+    "𠚍" -> "2SSos 2PIzi", "彳" -> "2PIoi", "行" -> "2SIoi",
+    "食" -> "2PSox", "飠" -> "2SSox",
   //oi characters - among the first 6000
   //術,徵,衛,衝,街,衡,衍,銜,衙,愆,衢
-    "術" -> "2Soi 1Pf 1Ps", "徵" -> "2Soi 2Pll 1Pa 1Pm 1Pb", "衛" -> "2Soi 1Sx 1Pj 2Smb", "衝" -> "2Soi 1Pm 2Ped 1Pk 1Pb",
-    "街" -> "2Soi 1Pb 1Pb", "衡" -> "2Soi 1Sr 2Pgd", "衍" -> "2Soi 1Pv", "銜" -> "2Soi 1Pp",
-    "衙" -> "2Soi 1Pa 1Sx 1Pj", "愆" -> "2Soi 1Pv 2Pwz", "衢" -> "2Soi 1Pl 1Pl 2Pni"
+    "術" -> "2SIoi 1PSf 1PSs", "徵" -> "2SIoi 2PIll 1PAa 1PMm 1PAb 1PSmo",
+    "衛" -> "2SIoi 1SAx 1PAj 2SImb", "衝" -> "2SIoi 1PMm 2PIed 1PAk 1PAb",
+    "街" -> "2SIoi 1PAb 1PAb", "衡" -> "2SIoi 1SAr 2PSgd", "衍" -> "2SIoi 1PAv",
+    "銜" -> "2SIoi 1PAp", "衙" -> "2SIoi 1PAa 1SAx 1PAj",
+    "愆" -> "2SIoi 1PAv 2PSwz", "衢" -> "2SIoi 1PAl 1PAl 2PAni"
   )
   private val zmP = HashMap(
     //"爲" -> "",//儰 蟡
-    "𠂢" -> "2Spd 2Trh", "㐆" -> "2Spd 2Pxb 1Py",//派
-    "金" -> "1Pp", "彡" -> "2Ppd", "斤" -> "2Ppd", "𠂆" -> "2Spd",
-    "丘" -> "2Ppda", "豸" -> "2Ppq", "瓜" -> "2Pps", "釆" -> "2Ppf", "采" -> "2Spv 1Pf",
-    "爪" -> "2Ppv", "爫" -> "2Spv", "舟" -> "2Ppy")
+    "𠂢" -> "2SMpd 2TSrh", "㐆" -> "2SMpd 2PAxb 1PXy",//派
+    "金" -> "1PAp", "彡" -> "2PMpd", "斤" -> "2PIpd", "𠂆" -> "2SMpd",
+    "丘" -> "2PApda", "豸" -> "2PMpq", "瓜" -> "2PSps", "釆" -> "2PSpf", "采" -> "2SMpv 1PSf",
+    "爪" -> "2PSpv", "爫" -> "2SMpv", "舟" -> "2PSpy")
   private val zmQ = HashMap(
-    "册" -> "1Sq 1Sq 1Pa", //珊
-    "𠘧" -> "2Pqd", "月" -> "1Pq", "⿵⺆冫" -> "1Pq", //能
-    "丹" -> "1Sq 1Ss", "几" -> "2Pqd", "巩" -> "2Pbi 2Sqd",
-    "凡" -> "2Pqda", "風" -> "2Pqi", "九" -> "2Pqy", "丸" -> "2Pqya", "殳" -> "2Pqx",
-    "犭" -> "2Pqm")
+    "册" -> "1SXq 1SXq 1PAa", //珊
+    "𠘧" -> "2PXqd", "月" -> "1PAq", "⿵⺆冫" -> "1PAq", //能
+    "丹" -> "1SXq 1SSs", "几" -> "2PXqd", "巩" -> "2PAbi 2SSqd",
+    "凡" -> "2PSqda", "風" -> "2PSqi", "九" -> "2PXqy", "丸" -> "2PSqya", "殳" -> "2PSqx",
+    "犭" -> "2PMqm")
   private val zmR = HashMap(
-    "⿴𠂊冫" -> "2Srs", "象" -> "1Pr 1Pj 2Sgq",
-    "裊" -> "2Trz 1Ss 2Srh", "梟" -> "2Trz 1Pf",
-    "卿" -> "2Srh 2Sxo 1Sy", "兜" -> "2Srh 2Pnk 1Sx 2Prd",
-    "旅" -> "2Psy 2Pma 2Srh", "玈" -> "1Ss 1Pz 2Pzs 2Pma 2Srh",
-    "祣" -> "2Pws 2Pma 2Srh", "夊" -> "2Srs", //傻
-    "印" -> "2Srh 1Pa 1Sy", "⿰⿴𠂊冫②" -> "2Srs", //祭
-    "𠂊" -> "1Sr", "⿰③刀" -> "2Srh 1Ps 2Pyd", "免" -> "1Sr 1Pj 2Prd",
-    "角" -> "1Sr 1Sl 1Pd", "𩵋" -> "1Sr 2Pgd", "魚" -> "1Sr", "久" -> "1Sr 1Ps",
-    "儿" -> "2Prd", "匕" -> "2Prr", "比" -> "2Prr 2Prr", "𠤎" -> "2Srr",
-    "勹" -> "2Pry", "包" -> "2Sry", "匃" -> "2Sry",
-    "夕" -> "2Prs", "夂" -> "2Srs", "⿴𠂊⺀" -> "2Srs",
-    "氏" -> "2Prh", "𠂎" -> "2Srh", "卬" -> "2Srh 1Sy", "𧘇" -> "2Srh",
-    "欠" -> "2Pro", "鳥" -> "2Srz", "島" -> "2Srz 2Pll", "烏" -> "2Srza")
+    "⿴𠂊冫" -> "2SArs", "象" -> "1PXr 1PAj 2SSgq",
+    "裊" -> "2TXrz 1SAs 2SSrh", "梟" -> "2TXrz 1PSf",
+    "卿" -> "2SMrh 2SSxo 1SIy", "兜" -> "2SXrh 2PAnk 1SAx 2PXrd",
+    "旅" -> "2PXsy 2PAma 2SSrh", "玈" -> "1SAs 1PXz 2PSzs 2PAma 2SSrh",
+    "祣" -> "2PSws 2PAma 2SSrh", "夊" -> "2SSrs", //傻
+    "印" -> "2SXrh 1PAa 1SIy", "⿰⿴𠂊冫②" -> "2SSrs", //祭
+    "𠂊" -> "1SXr", "⿰③刀" -> "2SXrh 1PSs 2PMyd",//劉
+    "免" -> "1SXr 1PAj 2PXrd",
+    "角" -> "1SXr 1SXl 1PId", "𩵋" -> "1SAr 2PSgd",
+    "魚" -> "1SSr", "久" -> "1SXr 1PSs",
+    "儿" -> "2PXrd", "匕" -> "2PXrr", "比" -> "2PXrr 2PXrr", "𠤎" -> "2SXrr",
+    "勹" -> "2PXry", "包" -> "2SXry", "匃" -> "2SXry",
+    "夕" -> "2PSrs", "夂" -> "2SSrs", "⿴𠂊⺀" -> "2SSrs",
+    "氏" -> "2PSrh", "𠂎" -> "2SMrh", "卬" -> "2SXrh 1SIy", "𧘇" -> "2SSrh",
+    "欠" -> "2PSro", "鳥" -> "2SSrz", "島" -> "2SXrz 2PIll", "烏" -> "2SSrza")
   private val zmS = HashMap(
-    "主" -> "1Ps 1Pc",
-    "乀" -> "1Ps", "褎" -> "1Ss 2Srh 1Pa 2Pmf 2Srh",
-    "亦" -> "1Ss 2Snd 1Po", "⿱丶⑤" -> "1Ps 2Pxo", //郎
-    "言" -> "1Ps", "亠" -> "1Ss", "文" -> "2Pso", "亡" -> "2Psh", //compare "㐬" -> "a zs nd",
-    "立" -> "2Psu", "辛" -> "2Pse", "方" -> "2Psy", "永" -> "2Psk", "龍" -> "2Psi",
-  "丶" -> "1Ps")
+    "主" -> "1PAs 1PAc",
+    "乀" -> "1PSs", "褎" -> "1SAs 2SXrh 1PAa 2PSmf 2SSrh",
+    "亦" -> "1SAs 2SInd 1PSo", "⿱丶⑤" -> "1PSs 2PSxo", //郎
+    "言" -> "1PAs", "亠" -> "1SAs", "文" -> "2PSso", "亡" -> "2PXsh", //compare "㐬" -> "a zs nd",
+    "立" -> "2PAsu", "辛" -> "2PIse", "方" -> "2PXsy",
+    "永" -> "2PSsk", "龍" -> "2PAsi",
+  "丶" -> "1PSs")
   private val zmT = HashMap(
-    "廌" -> "2Stx 1Pa 1Pz 2Suo", //etzu
-    "疒" -> "1Pt", "病" -> "1St", "冫" -> "2Ptd", "⺀" -> "2Std",
-    "北" -> "2Sti 2Prr", "广" -> "2Ptg", "廣" -> "2Stg", "鹿" -> "2Ptx",
-    "⿸广⿻コ⿰丨丨" -> "2Stx")
+    "廌" -> "2SAtx 1PAa 1PXz 2SSuo", //etzu
+    "疒" -> "1PMt", "病" -> "1SSt", "冫" -> "2PAtd", "⺀" -> "2SStd",
+    "北" -> "2SAti 2PXrr", "广" -> "2PMtg", "廣" -> "2SStg", "鹿" -> "2PXtx",
+    "⿸广⿻コ⿰丨丨" -> "2SAtx")
   private val zmU = HashMap(
     //chars that didnt have a shape breakdown:
-    "羲" -> "2Suc 2Pmf 1Pa 1Pz 2Phm", "儰" -> "1Pn 1Pe 2Sud 1Py 2Suo",//犧
-    "為" -> "2Sud 1Py 2Suo", "蟡" -> "1P1 2Sud 1Py 2Suo", "撝" -> "1Pd 2Sud 1Py 2Suo",
-    "噅" -> "1Pj 2Sud 1Py 2Suo", "𤾡" -> "2Pnk 2Sud 1Py 2Suo", //"蘤"
-    "辨" -> "2Pse 2Sud 2Pse", "寪" -> "2Pwd 2Suo 1Py 2Suo", "鄬" -> "2Suo 1Py 2Suo 1Py"
-    ,"关" -> "2Pua 2Pgd" //送
-    , "忄" -> "1Pu", "㣺" -> "1Su", "米" -> "2Puf", "丷" -> "1Sud",
-    "②又" -> "1Sud 2Pxs"//𡉢 帰
-    , "②帚" -> "1Sud 2Pxb 2Pww 2Pli", "丷下" -> "2Pua 2Pid", "䒑" -> "2Pua"
-    , "乎" -> "1Pm 2Sua", "⿻干丷" -> "1Ps 2Sua" //平
-    , "火" -> "2Puo", "灬" -> "2Suo"//灰 𤇴
-    , "半" -> "2Pub", "𢆉" -> "2Sub", "龹" -> "2Sub"//伴 㚔 堘 (2 missing)
-    , "⿱䒑⿻二丨" -> "2Puc", "𦍌" -> "2Suc"//𡗗 差 𦍼 𢜗 𦍌 羊  𩱁
+    "羲" -> "2SAuc 2PSmf 1PAa 1PXz 2PShm", "儰" -> "1PIn 1PIe 2SMud 1PXy 2SSuo",//犧
+    "為" -> "2SMud 1PXy 2SSuo", "蟡" -> "1PS1 2SMud 1PXy 2SSuo",
+    "撝" -> "1PAd 2SMud 1PXy 2SSuo",
+    "噅" -> "1PAj 2SMud 1PXy 2SSuo", "𤾡" -> "2PAnk 2SMud 1PXy 2SSuo", //"蘤"
+    "辨" -> "2PIse 2SMud 2PIse", "寪" -> "2PXwd 2SMuo 1PXy 2SSuo",
+    "鄬" -> "2SMuo 1PXy 2SSuo 1PXy"
+    ,"关" -> "2PAua 2PSgd" //送
+    , "忄" -> "1PSu", "㣺" -> "1SSu", "米" -> "2PSuf", "丷" -> "1SMud",
+    "②又" -> "1SMud 2PSxs"//𡉢 帰
+    , "②帚" -> "1SMud 2PAxb 2PXww 2PIli", "丷下" -> "2PAua 2PSid", "䒑" -> "2PAua"
+    , "乎" -> "1PMm 2SIua", "⿻干丷" -> "1PAa 2SIua" //平
+    , "火" -> "2PSuo", "灬" -> "2SSuo"//灰 𤇴
+    , "半" -> "2PIub", "𢆉" -> "2SIub", "龹" -> "2SSub"//伴 㚔 堘 (2 missing)
+    , "⿱䒑⿻二丨" -> "2PIuc", "𦍌" -> "2SAuc"//𡗗 差 𦍼 𢜗 𦍌 羊  𩱁
   )
   private val zmV = HashMap(
-    "州" -> "2Pvd 2Pnd",
-    "氵" -> "1Pv", "⿻一氺" -> "1Sd 1Sv", "⿱丷八" -> "1Sv"//𢯼 求 剑 𠦂
-     , "佥" -> "2Pod 2Pbd 2Pvd", "兆" -> "1Sv 2Prd"
+    "州" -> "2PSvd 2PInd",
+    "氵" -> "1PAv", "⿻一氺" -> "1SId 1SSv", "⿱丷八" -> "1SSv"//𢯼 求 剑 𠦂
+     , "佥" -> "2PSod 2PAbd 2PMvd", "兆" -> "1SSv 2PXrd"
   )
   private val zmW = HashMap(
-    "之" -> "1Pw", "辶" -> "1Sw", "令" -> "2Pod 1Sw", "礻" -> "2Pws",
-    "宀" -> "2Pwd", "定" -> "2Swd", "冖" -> "2Pww"//之 辶 令 宀 冖 定
-    , "穴" -> "2Pwo", "冘" -> "2Pww 2Prd"
-  , "衤" -> "2Pws", "衤" -> "2Pwt"
-    , "戶" -> "2Spd 1Sx" //"戶" -> "2Pwm" //𫉚 戶
-   , "心" -> "2Pwz"//心 忠
-   , "黽" -> "2Pwx", "龜" -> "1Pr 2Swx" //澠 龜
+    "之" -> "1PSw", "辶" -> "1SSw", "令" -> "2PSod 1SSw", "礻" -> "2PSws",
+    "宀" -> "2PXwd", "定" -> "2SSwd", "冖" -> "2PXww"//之 辶 令 宀 冖 定
+    , "穴" -> "2PSwo", "冘" -> "2PXww 2PXrd"
+  , "衤" -> "2PSwt"
+    , "戶" -> "2SMpd 1SAx" //"戶" -> "2Pwm" //𫉚 戶
+   , "心" -> "2PSwz"//心 忠
+   , "黽" -> "2PXwx", "龜" -> "1PXr 2Swx" //澠 龜
   )
   private val zmX = HashMap(
-    "臦" -> "1Sx 1Pi 1Pa 1Pz 1Pi 1Sh",
-    "丑" -> "1Sx 2Ped", "𤴔" -> "1Px 2Pii", "鵖" -> "2Pnk 2Prr 2Srz", //羞 疏
-    "肅" -> "2Sxb 2Snd", "尺" -> "1Pxm 1Ps", "𡬠" -> "2Sxo 2Pds",
-    "彐" -> "2Pxb", "⿻コ一" -> "2Pxb", //寢
-    "承" -> "1Px 2Pkv 2Pcd", "⿻⿻コ一④" -> "2Pxk", //尋 兼
-    "隶" -> "2Sxb 2Skv", "尹" -> "3Pxma", "疋" -> "1Px 2Sii", "⿻⿻コ一亅" -> "2Sxb", //爭 君
-    "叚" -> "1Sx 2Pbd 1Sx 2Pxs", "既" -> "2Sxo 1Ph 2Prd",
-    "即" -> "2Sxo 1Sy", "⿳𦥑一" -> "2Snb", "龴" -> "2Sxs", "乛" -> "1Px", //興
-    "廄" -> "2Ptg 2Sxo 2Pqx",
-    "皮" -> "2Pxi", "𠃜" -> "2Sxm", "𫝀" -> "1Sx", //韋 xjmb 衛 oijm ??? - ser ud til at det sidste element er glemt
-    "癶" -> "2Sxs", "尸" -> "2Pxm",
-    "𠃍" -> "1Px", "㇇" -> "1Px", "肀" -> "2Sxb", "ユ" -> "1Sx",
-    "艮" -> "2Pxo", "⿱𦘒一" -> "2Sxb",
-    "幺" -> "1Pz 2Pzs",
-    "門" -> "2Pxd",//⿵門口
-    "又" -> "2Pxs"
+    "臦" -> "1SXx 1PIi 1PAa 1PXz 1PIi 1SXh",
+    "丑" -> "1SXx 2PAed", "𤴔" -> "1PXx 2PAii", "鵖" -> "2SSxo 2SSrz", //羞 疏
+    "肅" -> "2SAxb 2SInd", "尺" -> "1PMxm 1PSs", "𡬠" -> "2SSxo 2PSds",
+    "彐" -> "2PAxb", "⿻コ一" -> "2PAxb", //寢
+    "承" -> "1PXx 2PSkv 2PAcd", "⿻⿻コ一④" -> "2PSxk", //尋 兼
+    "隶" -> "2SIxb 2SSkv", "尹" -> "3PMxma",
+    "疋" -> "1PXx 2SSii", "⿻⿻コ一亅" -> "2SIxb", //爭 君
+    "叚" -> "1SAx 2PIbd 1SAx 2PSxs", "既" -> "2SSxo 1PXh 2PXrd",
+    "即" -> "2SSxo 1SIy", "⿳𦥑一" -> "2SAnb", "龴" -> "2SSxs", "乛" -> "1PXx", //興
+    "廄" -> "2PMtg 2SSxo 2PSqx",
+    "皮" -> "2PSxi", "𠃜" -> "2SMxm", "𫝀" -> "1SAx", //韋 xjmb 衛 oijm ??? - ser ud til at det sidste element er glemt
+    "癶" -> "2SSxs", "尸" -> "2PMxm",
+    "𠃍" -> "1PXx", "㇇" -> "1PXx", "肀" -> "2SIxb", "ユ" -> "1SAx",
+    "艮" -> "2PSxo", "⿱𦘒一" -> "2SAxb",
+    "⿴尸一" -> "2SMxm",
+    "幺" -> "1PXz 2PSzs",
+    "門" -> "2PAxd",//⿵門口
+    "又" -> "2PSxs"
   )
 
   //衛 𫝀
 
   private val zmY = HashMap(
-    "⿰丿𠃌" -> "2Sym", "刃" -> "2Pyd 1Ps", //別 認
-    "乜" -> "1Py 1Pz", "⿱勹又" -> "2Sym 2Pxs", "⿻刀二" -> "1Py 2Sbi", //沒vyxs 那yby "1Pyd 2Sbi"
-    "卍" -> "1Py 1Pi 1Pa 1Pi", "孑" -> "1Ty 1Ta", "孓" -> "1Ty 1Ps",
-    "⿲刀丫③" -> "1Py 2Pud 1Pi 2Srh", "㔾" -> "2Syyb", //齊 犯
-    "民" -> "3Syyb 2Shd", "及" -> "1Ty 1Pm 1Ps", "飛" -> "3Syda 1Sv 3Syda 1Sv 1Pm 2Snd",
-    "𠃌" -> "1Py", "㠯" -> "1Sy", "廴" -> "1Sy", "卩" -> "1Py",
-    "阝" -> "1Py", "了" -> "1Py", "刀" -> "2Pyd", "乙" -> "2Pyda", "𠄎" -> "1Py",
-    "⺄" -> "2Syda", "也" -> "2Pyi", "巴" -> "2Pyia", "子" -> "2Pya",
-    "力" -> "2Pym", "⿻丿𠃌" -> "2Sym", "己" -> "2Pyy", "已" -> "2Pyya",
-    "巳" -> "2Pyyb", "弓" -> "2Pyz", "𢎨" -> "2Syz", "习" -> "2Pyt")
+    "⿰丿𠃌" -> "2SMym", "刃" -> "2PMyd 1PSs", //別 認
+    "乜" -> "1PXy 1PXz", "⿱勹又" -> "2SXym 2PSxs", "⿻刀二" -> "1PMy 2SAbi", //沒vyxs 那yby "1Pyd 2Sbi"
+    "卍" -> "1PXy 1PIi 1PAa 1PIi", "孑" -> "1TIy 1TAa", "孓" -> "1TIy 1PSs",
+    "⿲刀丫③" -> "1PMy 2PMud 1PIi 2SSrh", "㔾" -> "2SXyyb", //齊 犯
+    "民" -> "3SXyyb 2SShd", "及" -> "1TXy 1PMm 1PSs", "飛" -> "3SSyda 1SSv 3SSyda 1SSv 1PMm 2SInd",
+    "𠃌" -> "1PXy", "㠯" -> "1SAy", "廴" -> "1SSy", "卩" -> "1PIy",
+    "阝" -> "1PIy", "了" -> "1PIy", "刀" -> "2PMyd", "乙" -> "2PXyda", "𠄎" -> "1PXy",
+    "⺄" -> "2SSyda", "也" -> "2PXyi", "巴" -> "2PXyia", "子" -> "2PAya",
+    "力" -> "2PMym", "⿻丿𠃌" -> "2SMym", "己" -> "2PXyy", "已" -> "2PXyya",
+    "巳" -> "2PXyyb", "弓" -> "2PXyz", "𢎨" -> "2SMyz", "习" -> "2PAyt")
   private val zmZ = HashMap(
-    "焉" -> "1Pa 2Pii 1Pa 1Pz 2Suo",
-    "巤" -> "2Pzd 2Pjd 2Pos 2Szd", //獵
-    "𠃑" -> "1Pz", "㇉" -> "1Pz", "𠃊" -> "1Pz", //,"𢆸" -> "1Pz 2Pzs 1Pz 2Pzs 1Pz",//斷
-    "乡" -> "1Pz 2Szm", "夨" -> "1Pz 1Pa 1Ps",//奊
-    "糹" -> "1Sz", "糸" -> "1Sz", "毌" -> "2Szy", "丱" -> "2Szi",
-    "乚" -> "1Pz",
-    "以" -> "1Pz 1Ps 2Pod" //denne har ikke et ids opslag
+    "焉" -> "1PAa 2PAii 1PAa 1PXz 2SSuo",
+    "巤" -> "2PXzd 2PAjd 2PSos 2SSzd", //獵
+    "𠃑" -> "1PXz", "㇉" -> "1PXz", "𠃊" -> "1PXz", //,"𢆸" -> "1Pz 2Pzs 1Pz 2Pzs 1Pz",//斷
+    "乡" -> "1PXz 2SMzm", "夨" -> "1PXz 1PAa 1PSs",//奊
+    "糹" -> "1SXz", "糸" -> "1SSz", "毌" -> "2SAzy", "丱" -> "2SIzi",
+    "乚" -> "1PXz",
+    "以" -> "1PXz 1PSs 2PSod" //denne har ikke et ids opslag
   //z single stroke - 𣭖
   //mangle 1Pz. maaske fordi den kun findes som simplificeret
   //𠀔 𠫔 𣦶 𠀅 𢻽 𣨒 㙲
-  , "䜌" -> "2Pzs" //𦣏
-  , "巛" -> "2Pzd"
-  , "巜" -> "2Szd"
-  , "鼠" -> "2Pnb 2Szd" //𡿬 𤰕 𣜌 鼠 𤢪
+  , "䜌" -> "2PSzs" //𦣏
+  , "巛" -> "2PXzd"
+  , "巜" -> "2SXzd"
+  , "鼠" -> "2PAnb 2SSzd" //𡿬 𤰕 𣜌 鼠 𤢪
   //, "𤢪" -> skal tilfoejes hvis noedvendigt
-  , "厶" -> "2Pzs"
+  , "厶" -> "2PSzs"
   //厶 勾 𠇇
-  , "女" -> "2Pzm"
-  , "互" -> "2Pbd 2Szm"
-  , "彑" -> "2Szm"
-  , "𠂈" -> "2Szm"
+  , "女" -> "2PAzm"
+  , "互" -> "2PAbd 2SXzm"
+  , "彑" -> "2SAzm"
+  , "𠂈" -> "2SMzm"
   //𠯆 𠯞 彑
-  , "母" -> "2Pzy"
-  , "毋" -> "2Szy" //der mangler en 2Szy form
+  , "母" -> "2PSzy"
+  , "毋" -> "2SMzy" //der mangler en 2Szy form
   //每 毒 𩬍 毋
-  , "爿" -> "2Szi"
-  , "凵" -> "2Pzi"
-  , "丩" -> "2Szi"
-  , "屮" -> "2Szi"
-  , "艸" -> "2Szi"
+  , "爿" -> "2SMzi"
+  , "凵" -> "2PIzi"
+  , "丩" -> "2SIzi"
+  , "屮" -> "2SIzi"
+  , "艸" -> "2SIzi"
   //𤖀 𠁫 𠇿 𡴅 𦱶 𡴳 -venstre side af Ding mangler
   )
 

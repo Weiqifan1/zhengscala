@@ -33,12 +33,78 @@ class CodeAnalyser {
   def getInconsistencies(fileReader: InputSystemFileReader): List[List[(String, String, CharContent)]] =
     val codes = getCode(fileReader)
     val grupByCodes = codes.groupBy(c => c._1).values.toList
-    val onlyClash = grupByCodes.filter(each => each.size > 1).toList //273
-    val allDiffFullCodeLengths = onlyClash.filter(each => twoOrMoreSameElems(each)) //129
+    val onlyClash = grupByCodes.filter(each => each.size > 1).toList.flatten //273
+
+    //getAllCodesWith 4 or more elements
+    val only4ormore = codes.filter(each => each._2.split(" ").size > 3)
+    val fourPlusCodeDisam: List[(String, String, String, CharContent)] = only4ormore.map(each => fourOrMoreDisamCodeList(each))
+
+    //2022-10-02: jeg 20 der ikke matcher. jeg maa proeve flere loesninger
+    val newGroupBy = fourPlusCodeDisam.groupBy(c => c._3).values.toList.filter(each => each.size > 1).toList
+
+    //val allDiffFullCodeLengths = onlyClash.filter(each => twoOrMoreSameElems(each)) //129
     //59 tilbagevaerende konflikter er for mange. proev at
     //kigge de 129 igennem og se efter stroeg. maaske sidste stroeg fra 1. og 2. element.
     //val allDiffStartEndInitials = allDiffFullCodeLengths.filter(each => compareFandSinit(each)) //59
-    return allDiffFullCodeLengths
+    return List()
+
+  private def fourOrMoreDisamCodeList(tuple: (String, String, CharContent)): (String, String, String, CharContent) =
+    val fullCode = tuple._2.split(" ").map(each => each.trim).filter(each => each.nonEmpty)
+    var noInit: List[String] = null
+    try {
+      noInit = fullCode.map(each => each.substring(3)).toList
+    }catch {
+      case e => println("error: " ++ tuple._1 ++ tuple._2 ++ tuple._3.elemStr)
+      val test = ""
+    }
+    val disamCodeString: String = fourOrMoreDisamCode(noInit)
+    return (tuple._1, tuple._2, tuple._1 ++ disamCodeString, tuple._3)
+
+  private def fourOrMoreDisamCode(strings: List[String]): String =
+    if (strings == "j b nd o".split(" ").toList) {
+      val test = ""
+    }
+    if (strings.length < 4) {println("fourOrMoreDisamCode error: " ++ strings.mkString);return ""}
+    val pri_2_index: Int = 1
+    val pri_3_index: Int = 2
+    (strings, strings.last.length, strings(pri_2_index).length, strings(pri_3_index).length) match
+      case (_, 1, 1, 1) => "z"
+      case (_, 1, 1, _) => getStrokeType(Some(strings(pri_3_index).last), None)
+      case (_, 1, _, 1) => getStrokeType(Some(strings(pri_2_index).last), None)
+      case (_, 1, _, _) => getStrokeType(Some(strings(pri_2_index).last), Some(strings(pri_3_index).last))
+      case (_, _, 1, 1) => getStrokeType(Some(strings.last.last), None)
+      case (_, _, 1, _) => getStrokeType(Some(strings.last.last), Some(strings(pri_3_index).last))
+      case (_, _, _, 1) => getStrokeType(Some(strings.last.last), Some(strings(pri_2_index).last))
+      case (_, _, _, _) => getStrokeType(Some(strings.last.last), Some(strings(pri_2_index).last))
+
+  private def getStrokeType(first: Option[Char], second: Option[Char]): String =
+    val firstHit: Option[Int] = if first.isDefined then getStrokeTypeHelper(first.get) else None
+    val secondHit: Option[Int] = if (second.isDefined) then getStrokeTypeHelper(second.get) else None
+    //when we have the strokeTypes, we need to translate it into an alphabet key
+    val alpha = ('a' to 'z').toList
+    var result = ""
+    var index: Int = 0
+    if (secondHit.isEmpty) {index = firstHit.get * 5}
+    else index = firstHit.get * 5 + secondHit.get
+    val firstString: String = if firstHit.isDefined then firstHit.get.toString else "0"
+    val secondString: String = if secondHit.isDefined then secondHit.get.toString else "0"
+    return firstString ++ secondString
+    //val finalResult: Char = alpha(index)
+    //return finalResult.toString
+
+  //return an integer from 0 to 4, matching the index of the alphabet
+  private def getStrokeTypeHelper(codeLetter: Char): Option[Int] =
+    val firstStrokes = List('a', 'b', 'c', 'd', 'e', 'f', 'g', 'h')
+    val secondStrokes = List('i', 'j', 'k', 'l')
+    val thirdStroeks = List('m', 'n', 'o', 'p', 'q', 'r')
+    val forthStroeks = List('s', 't', 'u', 'v', 'w')
+    val fifthStroeks = List('x', 'y', 'z')
+    if firstStrokes.contains(codeLetter) then return Some(0)//Some('a')
+    if secondStrokes.contains(codeLetter) then return Some(1)//Some('i')
+    if thirdStroeks.contains(codeLetter) then return Some(2)//Some('m')
+    if forthStroeks.contains(codeLetter) then return Some(3)//Some('s')
+    if fifthStroeks.contains(codeLetter) then return Some(4) else return None//Some('x') else return None
+
 
   private def compareFandSinit(value: List[(String, String, CharContent)]): Boolean =
     val newInp: List[List[String]] = value.map(each => each._2.split(" ").toList)
@@ -74,15 +140,15 @@ class CodeAnalyser {
         .map(each => each.trim)
         .filter(x => !(x.length == 0)).toList
     //test hvis splitItHarStrings med laengde under 3
-    val lenLessThan3: Boolean = splitIT.filter(x => x.length < 3).toList.size > 0
-    if (lenLessThan3) {
+    val lenLessThan4: Boolean = splitIT.filter(x => x.length < 4).toList.size > 0
+    if (lenLessThan4) {
       val str: String = ""
     }
     val toOrdinaryCode: String = strListToCustomCode(splitIT)
     return toOrdinaryCode
 
   private def strListToCustomCode(input: List[String]): String =
-    val withoutInitials = input.map(each => each.substring(2))
+    val withoutInitials = input.map(each => each.substring(3))
     val newCode = strListToCustomCodeHelper(withoutInitials, input)
     return newCode.mkString
 

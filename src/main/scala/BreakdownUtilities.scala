@@ -30,15 +30,15 @@ class BreakdownUtilities {
     var idsMatch: String = if (fileReader.idsLinesMap.contains(stringToSearch)) fileReader.idsLinesMap(stringToSearch) else ""
     var shortestPossibleString: String = shortestStringWithMatch(stringToSearch, fileReader)
 
-    if(!inputSystemMatch.isBlank) {
+    if(!inputSystemMatch.isEmpty) {
       return stringToSearch + " " + inputSystemMatch
-    }else if (!idsMatch.isBlank && !stringToSearch.eq(idsMatch)) {
+    }else if (!idsMatch.isEmpty && !stringToSearch.eq(idsMatch)) {
       return searchFromChar(idsMatch, originalString, fileReader)
-    }else if (!idsMatch.isBlank){
+    }else if (!idsMatch.isEmpty){
       return idsMatch+"!!!!"
-    }else if (shortestPossibleString.isBlank && stringToSearch.length == 1) {
+    }else if (shortestPossibleString.isEmpty && stringToSearch.length == 1) {
       return stringToSearch+"!!!!"
-    }else if (shortestPossibleString.isBlank) {
+    }else if (shortestPossibleString.isEmpty) {
 
       //stringToSearch might be empty here
       if (stringToSearch.size == 0) {
@@ -60,7 +60,7 @@ class BreakdownUtilities {
     var fullComponentString: String = null;
     var firstComponent: String = null;
     var componentList: ListBuffer[ComponentInfo] = ListBuffer();
-    if (firstIds.isBlank) {
+    if (firstIds.isEmpty) {
       return CharacterBreakdown(character, fullComponentString, firstComponent, componentList.toList, "no character match")
     }else {
       fullComponentString = firstIds;
