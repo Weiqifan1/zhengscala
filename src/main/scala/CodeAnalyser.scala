@@ -61,21 +61,22 @@ class CodeAnalyser {
     return (tuple._1, tuple._2, tuple._1 ++ disamCodeString, tuple._3)
 
   private def fourOrMoreDisamCode(strings: List[String]): String =
-    if (strings == "j b nd o".split(" ").toList) {
+    val noInit: List[String] = strings.map(each => each.substring(3)) //each.substring(3)
+    if (noInit == "j b nd o".split(" ").toList) {
       val test = ""
     }
     if (strings.length < 4) {println("fourOrMoreDisamCode error: " ++ strings.mkString);return ""}
     val pri_2_index: Int = 1
     val pri_3_index: Int = 2
-    (strings, strings.last.length, strings(pri_2_index).length, strings(pri_3_index).length) match
+    (strings, noInit.last.length, noInit(pri_2_index).length, noInit(pri_3_index).length) match
       case (_, 1, 1, 1) => "z"
-      case (_, 1, 1, _) => getStrokeType(Some(strings(pri_3_index).last), None)
-      case (_, 1, _, 1) => getStrokeType(Some(strings(pri_2_index).last), None)
-      case (_, 1, _, _) => getStrokeType(Some(strings(pri_2_index).last), Some(strings(pri_3_index).last))
-      case (_, _, 1, 1) => getStrokeType(Some(strings.last.last), None)
-      case (_, _, 1, _) => getStrokeType(Some(strings.last.last), Some(strings(pri_3_index).last))
-      case (_, _, _, 1) => getStrokeType(Some(strings.last.last), Some(strings(pri_2_index).last))
-      case (_, _, _, _) => getStrokeType(Some(strings.last.last), Some(strings(pri_2_index).last))
+      case (_, 1, 1, _) => getStrokeType(Some(noInit(pri_3_index).last), Some(noInit(pri_3_index)(0)))
+      case (_, 1, _, 1) => getStrokeType(Some(noInit(pri_2_index).last), Some(noInit(pri_2_index)(0)))
+      case (_, 1, _, _) => getStrokeType(Some(noInit(pri_2_index).last), Some(noInit(pri_3_index).last))
+      case (_, _, 1, 1) => getStrokeType(Some(noInit.last.last), Some(noInit(pri_2_index)(0)))
+      case (_, _, 1, _) => getStrokeType(Some(noInit.last.last), Some(noInit(pri_3_index).last))
+      case (_, _, _, 1) => getStrokeType(Some(noInit.last.last), Some(noInit(pri_2_index).last))
+      case (_, _, _, _) => getStrokeType(Some(noInit.last.last), Some(noInit(pri_2_index).last))
 
   private def getStrokeType(first: Option[Char], second: Option[Char]): String =
     val firstHit: Option[Int] = if first.isDefined then getStrokeTypeHelper(first.get) else None
